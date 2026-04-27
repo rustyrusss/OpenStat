@@ -1,541 +1,530 @@
 <?php
-$current = basename($_SERVER['PHP_SELF'], '.php');
-$pageMap = ['index'=>'home','about'=>'about','database'=>'database','metadata'=>'metadata','featured'=>'featured','contact'=>'contact'];
-$activePage = $pageMap[$current] ?? 'home';
-function navClass($page, $activePage) {
-  return $page === $activePage ? 'nav-link active' : 'nav-link';
-}
+/* ============================================================
+   PAGE CONFIGURATION — Edit everything here
+   ============================================================ */
+
+/* ── Page meta ── */
+$page_title       = 'Population & Vital Statistics';
+$page_description = 'Explore official statistics on population, births, deaths, marriage and other vital events in the Philippines.';
+$hero_image       = 'Img/Background-Data.png';
+$active_nav       = 'database'; // home | about | database | dashboard | featured | contact
+
+/* ── Breadcrumb trail ── */
+$breadcrumbs = [
+  ['label' => 'Database',                       'href' => 'database.php'],
+  ['label' => 'Population and Vital Statistics', 'href' => ''],  // empty = current page (no link)
+];
+
+/* ── Left: category sidebar ── */
+$categories = [
+  ['label' => 'Population', 'href' => '#', 'active' => true ],
+  ['label' => 'Births',     'href' => '#', 'active' => false],
+  ['label' => 'Deaths',     'href' => '#', 'active' => false],
+  ['label' => 'Marriage',   'href' => '#', 'active' => false],
+  /* ── Add more categories here ── */
+];
+
+/* ── Filter dropdowns ── */
+$filter_categories   = ['All Categories', 'Population', 'Births', 'Deaths', 'Marriage'];
+$filter_geolocations = ['All Geolocation', 'NCR', 'Region I', 'Region II', 'Region III', 'Region IV-A'];
+$filter_years        = ['2010-2026', '2015-2026', '2020-2026'];
+$sort_options        = ['Latest Updated', 'Oldest First', 'Alphabetical'];
+
+/* ── Section heading above dataset list ── */
+$dataset_section_label = 'Population';
+
+/* ── Dataset list ──
+   Each entry:
+     title   → dataset name (linked)
+     size    → record count
+     updated → last updated date
+     csv     → CSV download link  (use '#' as placeholder)
+     details → Details page link  (use '#' as placeholder)
+     meta    → array of [ 'label' => '...', 'val' => '...' ]
+*/
+$datasets = [
+  [
+    'title'   => 'Total Population, Household Population, and Number of Household by Region and Province/Highly Urbanized City: Philippines, 2020',
+    'size'    => '7978',
+    'updated' => '4/22/2024',
+    'csv'     => '#',
+    'details' => '#',
+    'meta'    => [
+      ['label' => 'Geographic Location', 'val' => 'PHILIPPINES/a, ..NATIONAL CAPITAL REGION (NCR), ....City of Manila, ....City of Mandaluyong, ..., ...Eight (8) Area Clusters *** (135)'],
+      ['label' => 'Parameter',           'val' => 'Total Population, Household Population, Number of Households, (3)'],
+    ],
+  ],
+  [
+    'title'   => 'Projected Population Based on 2020 CPH by Five-Year Age Group and Sex and Single- Year Interval',
+    'size'    => '4586',
+    'updated' => '6/3/2024',
+    'csv'     => '#',
+    'details' => '#',
+    'meta'    => [
+      ['label' => 'Sex',       'val' => 'Both Sexes, Male, Female, (3)'],
+      ['label' => 'Age Group', 'val' => 'All Ages, 0-4, 5-9, 10-14, ...., 85+ (19)'],
+      ['label' => 'Year',      'val' => '2020, 2021, 2022, 2023, ..., 2030 (11)'],
+    ],
+  ],
+  [
+    'title'   => 'Population by Age Group, Sex, Region, and Province/Highly Urbanized City: Philippines, 2020',
+    'size'    => '92393',
+    'updated' => '4/22/2024',
+    'csv'     => '#',
+    'details' => '#',
+    'meta'    => [
+      ['label' => 'Geographic Location', 'val' => 'PHILIPPINES/a, ...NATIONAL CAPITAL REGION (NCR), ....City of Manila, ....City of Mandaluyong, ..., ...Eight (8) Area Clusters *** (135)'],
+      ['label' => 'Parameter',           'val' => 'Total Population, Household Population, (2)'],
+      ['label' => 'Sex',                 'val' => 'Both Sexes, Male, Female, (3)'],
+      ['label' => 'Age Group',           'val' => 'All Ages, Below 5, 5-9, 10-14, ....80 years old and over (18)'],
+    ],
+  ],
+  [
+    'title'   => 'Occupied Housing Units, Number of Household, Household Population, by Types of Building and Province/Highly Urbanized City: Philippines, 2020',
+    'size'    => '25657',
+    'updated' => '4/22/2024',
+    'csv'     => '#',
+    'details' => '#',
+    'meta'    => [
+      ['label' => 'Geographic Location', 'val' => 'PHILIPPINES/a, ...Eight (8) Area Clusters *** (135)'],
+      ['label' => 'Type of Building',    'val' => 'Single House, Duplex, Multi-unit Residential, (5)'],
+    ],
+  ],
+  /* ── Add more datasets here ── */
+];
+
+/* ── Right sidebar: related links ── */
+$related_links = [
+  ['label' => "User's Guide",         'href' => '#'],
+  ['label' => 'Metadata Dictionary',  'href' => '#'],
+  ['label' => 'Related Publications', 'href' => '#'],
+  /* ── Add more links here ── */
+];
+
+/* ── Right sidebar: contact info ── */
+$contact = [
+  'logo'     => 'Img/Logos/OpenStat-Logo.png',
+  'intro'    => 'For data inquiries, contact:',
+  'division' => 'Knowledge Management and Communication Division (KMCD)',
+  'agency'   => 'Philippine Statistics Authority',
+  'address'  => '9/F PSA Headquarters, PSA Complex, East Avenue, Diliman, Quezon City',
+  'email'    => 'info@psa.gov.ph',
+];
+
+/* ── Navigation items ── */
+$nav_items = [
+  ['label' => 'Home',       'href' => 'index.php',    'key' => 'home'],
+  ['label' => 'About',      'href' => 'about.php',    'key' => 'about'],
+  ['label' => 'Database',   'href' => 'database.php', 'key' => 'database'],
+  ['label' => 'Dashboard',  'href' => 'dashboard.php','key' => 'dashboard'],
+  ['label' => 'Featured',   'href' => 'featured.php', 'key' => 'featured'],
+  ['label' => 'Contact Us', 'href' => 'contact.php',  'key' => 'contact'],
+];
+
+/* ============================================================
+   END CONFIGURATION — Do not edit below unless needed
+   ============================================================ */
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PSA OpenSTAT - Population and Vital Statistics</title>
+  <title>PSA OpenSTAT - <?= htmlspecialchars($page_title) ?></title>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1a3269',
+            'primary-dark': '#142a56',
+            'primary-light': '#eff6ff',
+          },
+          fontFamily: { sans: ['Open Sans', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Open Sans', sans-serif; background: #f3f4f6; color: #1f2937; }
+    body { font-family: 'Open Sans', sans-serif; background: #f0f0f0; overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
 
-    /* ── NAVBAR ── */
-    .navbar {
-      background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-      padding: 0 160px; display: flex; align-items: center;
-      justify-content: space-between; height: 75px;
-      position: sticky; top: 0; z-index: 100;
-    }
-    .nav-links { display: flex; align-items: center; gap: 2px; }
-    .nav-link {
-      color: #374151; font-size: 15px; font-weight: 500; text-decoration: none;
-      padding: 8px 20px; border-radius: 6px;
-      transition: color 0.2s, background 0.2s; white-space: nowrap;
-    }
-    .nav-link:hover { color: #1a3269; background: #eff6ff; }
-    .nav-link.active { background: #1a3269; color: #fff; font-weight: 600; padding: 9px 26px; }
-    .nav-link.active:hover { background: #142a56; }
-
-    /* ── SEARCH PILL ── */
-    .search-pill {
-      display: flex; align-items: center; margin-left: 6px; background: #fff;
-      border: 2px solid #d1d5db; border-radius: 24px; height: 38px; overflow: hidden;
-      transition: border-color 0.3s, width 0.4s cubic-bezier(.4,0,.2,1), box-shadow 0.3s;
-      width: 38px;
-    }
-    .search-pill.open { width: 220px; border-color: #1a3269; box-shadow: 0 0 0 3px rgba(26,50,105,0.12); }
-    .search-pill-btn {
-      flex-shrink: 0; width: 34px; height: 34px; display: flex; align-items: center;
-      justify-content: center; cursor: pointer; background: transparent; border: none;
-      border-radius: 50%; transition: background 0.2s;
-    }
-    .search-pill-btn:hover { background: #eff6ff; }
-    .search-pill-input {
-      flex: 1; min-width: 0; padding: 0 10px 0 2px; font-size: 14px; color: #374151;
-      background: transparent; border: none; outline: none; font-family: 'Open Sans', sans-serif;
-      opacity: 0; pointer-events: none; transition: opacity 0.25s ease 0.12s;
-    }
-    .search-pill.open .search-pill-input { opacity: 1; pointer-events: auto; }
-
-    /* ── PAGE HERO ── */
-    .page-hero {
-      position: relative; background: #0a1a6e; overflow: hidden;
-      height: 80px; display: flex; align-items: center; justify-content: center;
-    }
-    .page-hero img.hero-backdrop {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; opacity: 0.45; mix-blend-mode: screen;
-    }
-    .page-hero::before {
-      content: ''; position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(to right, rgba(8,20,90,0.85), rgba(26,50,105,0.70));
-    }
-    .page-hero h1 {
-      position: relative; z-index: 2; color: #fff; font-size: 20px; font-weight: 700;
-      letter-spacing: 0.3px; text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    /* ── Navbar ── */
+    .navbar { animation: slideDown 0.5s cubic-bezier(.22,1,.36,1) both; }
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to   { transform: translateY(0);     opacity: 1; }
     }
 
-    /* ── BREADCRUMB ── */
-    .breadcrumb {
-      background: #fff; border-bottom: 1px solid #e5e7eb;
-      padding: 9px 40px; font-size: 12.5px; color: #6b7280;
+    /* ── Nav links ── */
+    .nav-blue-link {
+      display: inline-block; color: #fff; font-size: 15px; font-weight: 600;
+      text-decoration: none; padding: 13px 30px; transition: background 0.15s;
+      white-space: nowrap; letter-spacing: 0.3px;
     }
-    .breadcrumb a { color: #1a3269; text-decoration: none; }
-    .breadcrumb a:hover { text-decoration: underline; }
-    .breadcrumb span { margin: 0 6px; }
+    .nav-blue-link:hover      { background: rgba(255,255,255,0.12); }
+    .nav-blue-link.active-nav { background: rgba(255,255,255,0.18); font-weight: 700; }
 
-    /* ── MAIN LAYOUT ── */
-    .main-wrap { max-width: 1100px; margin: 0 auto; padding: 26px 40px 50px; }
+    /* ── Hero ── */
+    @keyframes heroFadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-title { animation: heroFadeIn 0.7s 0.15s cubic-bezier(.22,1,.36,1) both; }
+    .hero-desc  { animation: heroFadeIn 0.7s 0.28s cubic-bezier(.22,1,.36,1) both; }
 
-    /* Page title block */
-    .page-title-block {
-      margin-bottom: 18px;
-      padding-bottom: 14px;
-      border-bottom: 2px solid #e5e7eb;
-    }
-    .page-title-block h2 {
-      font-size: 22px; font-weight: 700; color: #1a3269; margin-bottom: 12px;
-    }
-    .page-title-block p {
-      font-size: 13px; color: #4b5563; line-height: 1.8; max-width: 780px;
-    }
-
-    /* ── CONTENT + SIDEBAR grid ── */
-    .content-sidebar {
-      display: grid;
-      grid-template-columns: 1fr 240px;
-      gap: 20px;
-      align-items: start;
-    }
-
-    /* ── TOPIC CARDS ── */
-    .explore-label {
-      font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 14px;
-    }
-    .topic-cards {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 22px;
-      flex-wrap: wrap;
-    }
-    .topic-card {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      overflow: hidden;
-      width: 180px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      transition: box-shadow 0.25s ease, transform 0.25s ease;
-    }
-    .topic-card:hover {
-      box-shadow: 0 8px 24px rgba(0,0,0,0.13);
-      transform: translateY(-4px);
-    }
-    .topic-card-img {
-      width: 100%; height: 110px; object-fit: cover; display: block;
-      transition: transform 0.35s ease;
-    }
-    .topic-card:hover .topic-card-img { transform: scale(1.05); }
-    .topic-card-img-wrap { overflow: hidden; height: 110px; }
-    .topic-card-body { padding: 10px 12px 4px; }
-    .topic-card-title {
-      font-size: 13px; font-weight: 700; color: #1a3269;
-      text-align: center; margin-bottom: 10px;
-    }
-    .topic-card-btn {
-      display: block; width: 100%;
-      background: #1a3269; color: #fff;
-      font-size: 11.5px; font-weight: 600;
-      text-align: center; padding: 7px 0;
-      border: none; cursor: pointer;
-      font-family: 'Open Sans', sans-serif;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .topic-card-btn:hover { background: #142a56; }
-
-    /* ── CHART + SUMMARY grid ── */
-    .chart-summary {
-      display: grid;
-      grid-template-columns: 1fr 260px;
-      gap: 16px;
-      margin-top: 4px;
-    }
-
-    /* Chart panel */
-    .chart-panel {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      padding: 18px 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-    .chart-panel-title {
-      font-size: 12px; font-weight: 700; color: #1f2937;
-      margin-bottom: 4px; text-align: center;
-    }
-    .chart-panel-sub {
-      font-size: 10.5px; color: #9ca3af; text-align: center; margin-bottom: 16px;
-    }
-
-    /* Bar chart */
-    .bar-chart { display: flex; align-items: flex-end; gap: 10px; height: 160px; padding: 0 4px; }
-    .bar-group { display: flex; flex-direction: column; align-items: center; flex: 1; gap: 4px; }
-    .bar-pair { display: flex; gap: 3px; align-items: flex-end; width: 100%; justify-content: center; }
-    .bar {
-      width: 18px; border-radius: 3px 3px 0 0;
-      transition: opacity 0.2s;
-      position: relative;
-    }
-    .bar:hover { opacity: 0.8; }
-    .bar-teal  { background: #14b8a6; }
-    .bar-blue  { background: #3b82f6; }
-    .bar-label { font-size: 9.5px; color: #6b7280; text-align: center; line-height: 1.3; margin-top: 4px; }
-    .bar-value { font-size: 8.5px; color: #374151; font-weight: 600; }
-
-    .chart-legend {
-      display: flex; gap: 14px; justify-content: center; margin-top: 12px; flex-wrap: wrap;
-    }
-    .legend-item { display: flex; align-items: center; gap: 5px; font-size: 10.5px; color: #6b7280; }
-    .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
-
-    /* Summary panel */
-    .summary-panel {
-      background: #1a3269;
-      border-radius: 10px;
-      padding: 16px 18px;
-      color: #fff;
-    }
-    .summary-panel-title {
-      font-size: 13px; font-weight: 700; margin-bottom: 12px;
-      padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.2);
-    }
-    .summary-label {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; color: #93c5fd; margin-bottom: 8px;
-    }
-    .summary-item {
-      display: flex; gap: 6px; margin-bottom: 9px; align-items: flex-start;
-    }
-    .summary-item-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: #60a5fa; flex-shrink: 0; margin-top: 5px;
-    }
-    .summary-item-text { font-size: 11.5px; line-height: 1.55; color: #dbeafe; }
-    .summary-item-text strong { color: #fff; font-weight: 700; }
-
-    /* ── SIDEBAR ── */
-    .sidebar { display: flex; flex-direction: column; gap: 0; }
-    .sidebar-block {
-      background: #fff; border: 1px solid #e5e7eb; overflow: hidden;
-    }
-    .sidebar-block:first-child { border-radius: 10px 10px 0 0; }
-    .sidebar-block + .sidebar-block { border-top: none; }
-    .sidebar-block:last-child { border-radius: 0 0 10px 10px; }
-    .sidebar-block-header {
-      background: #1a3269; color: #fff; font-size: 13px; font-weight: 700; padding: 10px 14px;
-    }
-    .sidebar-block-body { padding: 8px 14px 14px; }
-    .sidebar-link {
-      display: block; font-size: 12.5px; color: #374151; text-decoration: none;
-      padding: 8px 2px; border-bottom: 1px solid #f3f4f6; transition: color 0.2s;
-    }
-    .sidebar-link:last-child { border-bottom: none; }
-    .sidebar-link:hover { color: #1a3269; }
-    .contact-logo { width: 56px; height: 56px; object-fit: contain; margin-bottom: 8px; }
-    .contact-text { font-size: 11.5px; color: #374151; line-height: 1.8; }
-    .contact-text strong { color: #111827; font-weight: 700; display: block; }
-    .contact-text a { color: #1a3269; text-decoration: none; }
-    .contact-text a:hover { text-decoration: underline; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #1f2937; color: #9ca3af; font-size: 12px; padding: 16px 36px;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
-    }
-    footer a { color: #9ca3af; text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: #fff; text-decoration: underline; }
-
-    /* ── ANIMATIONS ── */
+    /* ── Scroll animations ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     .animate-in {
       opacity: 0;
-      animation: fadeUp 0.55s cubic-bezier(.22,1,.36,1) forwards;
+      animation: fadeUp 0.5s cubic-bezier(.22,1,.36,1) forwards;
       animation-play-state: paused;
+    }
+
+    /* ── Category sidebar ── */
+    .cat-item {
+      display: block; text-decoration: none; font-size: 14px; font-weight: 600;
+      color: #374151; padding: 10px 18px; border-left: 3px solid transparent;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .cat-item:hover        { background: #eff6ff; color: #1a3269; border-left-color: #93c5fd; }
+    .cat-item.active       { background: #e8eef8; color: #1a3269; border-left-color: #1a3269; font-weight: 700; }
+
+    /* ── Filter bar ── */
+    .filter-bar {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      background: #fff; border-bottom: 1px solid #e5e7eb;
+      padding: 12px 18px;
+    }
+    .filter-select {
+      display: flex; align-items: center; gap: 6px;
+      background: #fff; border: 1px solid #d1d5db; border-radius: 6px;
+      padding: 7px 12px; font-size: 13px; font-weight: 600; color: #374151;
+      cursor: pointer; white-space: nowrap;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .filter-select:hover { border-color: #1a3269; box-shadow: 0 0 0 2px rgba(26,50,105,0.08); }
+    .filter-select select {
+      background: transparent; border: none; outline: none;
+      font-size: 13px; font-weight: 600; color: #374151;
+      font-family: 'Open Sans', sans-serif; cursor: pointer;
+    }
+    .search-box {
+      display: flex; align-items: center; gap: 8px;
+      background: #fff; border: 1px solid #d1d5db; border-radius: 6px;
+      padding: 7px 14px; flex: 1; min-width: 200px; max-width: 340px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .search-box:focus-within { border-color: #1a3269; box-shadow: 0 0 0 2px rgba(26,50,105,0.10); }
+    .search-box input {
+      border: none; outline: none; font-size: 13px; color: #374151;
+      background: transparent; width: 100%; font-family: 'Open Sans', sans-serif;
+    }
+    .quick-filter-label {
+      font-size: 12.5px; font-weight: 600; color: #6b7280;
+      display: flex; align-items: center; gap: 5px; white-space: nowrap;
+    }
+
+    /* ── Dataset items ── */
+    .dataset-item {
+      background: #fff; border: 1px solid #e0e0e0; border-radius: 10px;
+      padding: 18px 20px; margin-bottom: 14px;
+      transition: box-shadow 0.22s, transform 0.22s;
+    }
+    .dataset-item:hover { box-shadow: 0 6px 22px rgba(26,50,105,0.11); transform: translateY(-2px); }
+    .dataset-num-title {
+      font-size: 14px; font-weight: 700; color: #1a3269;
+      text-decoration: none; line-height: 1.45;
+      display: block; margin-bottom: 5px;
+    }
+    .dataset-num-title:hover { text-decoration: underline; }
+    .dataset-size-updated {
+      font-size: 12px; font-weight: 700; color: #374151; margin-bottom: 8px;
+    }
+    .dataset-meta-row { font-size: 12.5px; color: #374151; margin-bottom: 3px; line-height: 1.5; }
+    .dataset-meta-row strong { font-weight: 700; }
+
+    /* ── CSV / Details buttons ── */
+    .btn-csv {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #16a34a; color: #fff; font-size: 12.5px; font-weight: 700;
+      padding: 7px 16px; border-radius: 6px; text-decoration: none;
+      transition: background 0.18s; white-space: nowrap;
+    }
+    .btn-csv:hover { background: #15803d; }
+    .btn-details {
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 2px solid #1a3269; color: #1a3269; font-size: 12.5px; font-weight: 700;
+      padding: 6px 16px; border-radius: 6px; text-decoration: none;
+      transition: background 0.18s, color 0.18s; white-space: nowrap;
+    }
+    .btn-details:hover { background: #1a3269; color: #fff; }
+
+    /* ── Sidebar links ── */
+    .sidebar-link {
+      display: block; font-size: 13px; color: #374151; font-weight: 500;
+      text-decoration: none; padding: 9px 14px;
+      border-bottom: 1px solid #f3f4f6; transition: color 0.15s, background 0.15s;
+    }
+    .sidebar-link:last-child { border-bottom: none; }
+    .sidebar-link:hover { color: #1a3269; background: #eff6ff; }
+
+    /* ── Sort row ── */
+    .sort-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 18px 8px; background: #fff; border-bottom: 1px solid #e5e7eb;
+    }
+    .sort-select {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 600; color: #374151;
+    }
+    .sort-select select {
+      background: #fff; border: 1px solid #d1d5db; border-radius: 6px;
+      padding: 5px 28px 5px 10px; font-size: 13px; font-weight: 600;
+      color: #374151; font-family: 'Open Sans', sans-serif;
+      outline: none; cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' fill='none' viewBox='0 0 24 24' stroke='%236b7280' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 8px center;
     }
   </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-  <div>
-    <img src="Img/OpenStat-Logo.png" alt="PSA OpenSTAT" style="height:58px;width:auto;object-fit:contain;"/>
-  </div>
-  <div class="nav-links">
-    <a href="index.php"    class="<?= navClass('home',     $activePage) ?>">Home</a>
-    <a href="about.php"    class="<?= navClass('about',    $activePage) ?>">About</a>
-    <a href="database.php" class="<?= navClass('database', $activePage) ?>">Database</a>
-    <a href="metadata.php" class="<?= navClass('metadata', $activePage) ?>">Metadata</a>
-    <a href="featured.php" class="<?= navClass('featured', $activePage) ?>">Featured</a>
-    <a href="contact.php"  class="<?= navClass('contact',  $activePage) ?>">Contact Us</a>
-    <div class="search-pill" id="searchPill">
-      <button class="search-pill-btn" id="searchBtn" title="Search" aria-label="Toggle search">
-        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="#374151" stroke-width="2.3">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-        </svg>
-      </button>
-      <input class="search-pill-input" id="searchInput" type="text" placeholder="Search for statistics…" aria-label="Search"/>
+<!-- ══════════════════ NAVBAR ══════════════════ -->
+<header class="navbar sticky top-0 z-50" style="box-shadow:0 2px 8px rgba(0,0,0,0.35);">
+  <div class="bg-primary flex items-center justify-between px-12"
+       style="min-height:88px;padding-top:8px;padding-bottom:8px;">
+    <img src="Img/Logos/PSAHeader.png" alt="Philippine Statistics Authority"
+         style="height:88px;width:auto;object-fit:contain;"/>
+    <div style="margin-right:60px;">
+      <img src="Img/Logos/OpenStat-White.png" alt="OpenSTAT"
+           style="height:90px;width:auto;object-fit:contain;"/>
     </div>
   </div>
-</nav>
+  <nav class="flex items-center justify-center" style="background:#142a56;gap:0;">
+    <?php foreach ($nav_items as $nav): ?>
+    <a href="<?= htmlspecialchars($nav['href']) ?>"
+       class="nav-blue-link <?= $nav['key'] === $active_nav ? 'active-nav' : '' ?>">
+      <?= htmlspecialchars($nav['label']) ?>
+    </a>
+    <?php endforeach; ?>
+  </nav>
+</header>
 
-<!-- PAGE HERO -->
-<div class="page-hero">
-  <img src="Img/Backdrop.png" alt="" class="hero-backdrop"/>
-  <h1>Databases</h1>
-</div>
+<!-- ══════════════════ HERO ══════════════════ -->
+<div class="relative" style="min-height:180px;">
+  <img src="<?= htmlspecialchars($hero_image) ?>" alt=""
+       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:0;"/>
+  <div style="position:absolute;inset:0;background:rgba(4,17,61,0.72);z-index:1;"></div>
+  <div class="relative z-10 py-8" style="max-width:1180px;margin:0 auto;padding-left:16px;">
 
-<!-- BREADCRUMB -->
-<div class="breadcrumb">
-  <a href="database.php">Database</a>
-  <span>›</span>
-  Population and Vital Statistics
-</div>
-
-<!-- MAIN -->
-<div class="main-wrap">
-
-  <div class="content-sidebar">
-
-    <!-- LEFT CONTENT -->
-    <div>
-
-      <!-- Page title -->
-      <div class="page-title-block animate-in" style="animation-delay:0.05s;">
-        <h2>Population and Vital Statistics</h2>
-        <p>
-          Explore comprehensive and detailed statistics on the Philippine population structure, dynamics, vital
-          event, and migration patterns. Access raw data, curated reports, and interactive visualizations.
-        </p>
-      </div>
-
-      <!-- Topic cards -->
-      <div class="animate-in" style="animation-delay:0.12s;">
-        <p class="explore-label">Explore the following topics:</p>
-        <div class="topic-cards">
-
-          <div class="topic-card">
-            <div class="topic-card-img-wrap">
-              <img src="Img/Icons/Population and Vital Statistics/Population and Vital Statistics/Population.png"
-                   alt="Population" class="topic-card-img"/>
-            </div>
-            <div class="topic-card-body">
-              <div class="topic-card-title">Population</div>
-            </div>
-            <div style="padding: 0 10px 12px;">
-              <p style="font-size:11px; color:#6b7280; text-align:center; line-height:1.5; margin-bottom:8px;">
-                Census data, regional distribution, age-sex profile.
-              </p>
-            </div>
-            <a href="#" class="topic-card-btn">VIEW DATA</a>
-          </div>
-
-          <div class="topic-card">
-            <div class="topic-card-img-wrap">
-              <img src="Img/Icons/Population and Vital Statistics/Population and Vital Statistics/Birth.png"
-                   alt="Birth" class="topic-card-img"/>
-            </div>
-            <div class="topic-card-body">
-              <div class="topic-card-title">Birth</div>
-            </div>
-            <div style="padding: 0 10px 12px;">
-              <p style="font-size:11px; color:#6b7280; text-align:center; line-height:1.5; margin-bottom:8px;">
-                Live births by region, attendance, and mother's characteristics.
-              </p>
-            </div>
-            <a href="#" class="topic-card-btn">VIEW DATA</a>
-          </div>
-
-          <div class="topic-card">
-            <div class="topic-card-img-wrap">
-              <img src="Img/Icons/Population and Vital Statistics/Population and Vital Statistics/Death.png"
-                   alt="Death" class="topic-card-img"/>
-            </div>
-            <div class="topic-card-body">
-              <div class="topic-card-title">Death</div>
-            </div>
-            <div style="padding: 0 10px 12px;">
-              <p style="font-size:11px; color:#6b7280; text-align:center; line-height:1.5; margin-bottom:8px;">
-                Mortality rates, causes of death, and life expectancy data.
-              </p>
-            </div>
-            <a href="#" class="topic-card-btn">VIEW DATA</a>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Chart + Summary -->
-      <div class="chart-summary animate-in" style="animation-delay:0.20s;">
-
-        <!-- Bar Chart -->
-        <div class="chart-panel">
-          <div class="chart-panel-title">Detailed Breakdown of Population &amp; Vital Statistics (2024 - SAMPLE DATA)</div>
-          <div class="chart-panel-sub">SAMPLE DATA</div>
-
-          <div class="bar-chart">
-            <!-- Total Population -->
-            <div class="bar-group">
-              <div class="bar-pair">
-                <div class="bar bar-teal" style="height:140px;" title="112M"></div>
-                <div class="bar bar-blue" style="height:135px;" title="110M"></div>
-              </div>
-              <div class="bar-value">112 M</div>
-              <div class="bar-label">Total<br/>Population</div>
-            </div>
-            <!-- Provincial Dist -->
-            <div class="bar-group">
-              <div class="bar-pair">
-                <div class="bar bar-teal" style="height:50px;" title="15M"></div>
-                <div class="bar bar-blue" style="height:48px;" title="14M"></div>
-              </div>
-              <div class="bar-value">15 M</div>
-              <div class="bar-label">Provincial<br/>Dist.</div>
-            </div>
-            <!-- Age/Sex Profile -->
-            <div class="bar-group">
-              <div class="bar-pair">
-                <div class="bar bar-teal" style="height:45px;" title="13M"></div>
-                <div class="bar bar-blue" style="height:43px;" title="13M"></div>
-              </div>
-              <div class="bar-value">13 M</div>
-              <div class="bar-label">Age/Sex<br/>Profile</div>
-            </div>
-            <!-- Live Births -->
-            <div class="bar-group">
-              <div class="bar-pair">
-                <div class="bar bar-teal" style="height:65px;" title="20M"></div>
-                <div class="bar bar-blue" style="height:62px;" title="19M"></div>
-              </div>
-              <div class="bar-value">20 M</div>
-              <div class="bar-label">Live Births</div>
-            </div>
-            <!-- Causes of Death -->
-            <div class="bar-group">
-              <div class="bar-pair">
-                <div class="bar bar-teal" style="height:24px;" title="700k"></div>
-                <div class="bar bar-blue" style="height:22px;" title="690k"></div>
-              </div>
-              <div class="bar-value">700 k</div>
-              <div class="bar-label">Causes of<br/>Death</div>
-            </div>
-            <!-- Life Expectancy -->
-            <div class="bar-group">
-              <div class="bar-pair">
-                <div class="bar bar-teal" style="height:22px;" title="72 yrs"></div>
-                <div class="bar bar-blue" style="height:21px;" title="70 yrs"></div>
-              </div>
-              <div class="bar-value">72 yrs</div>
-              <div class="bar-label">Life Expectancy<br/>(Years)</div>
-            </div>
-          </div>
-
-          <div class="chart-legend">
-            <div class="legend-item"><div class="legend-dot" style="background:#14b8a6;"></div> 2024</div>
-            <div class="legend-item"><div class="legend-dot" style="background:#3b82f6;"></div> 2023</div>
-          </div>
-        </div>
-
-        <!-- Summary Panel -->
-        <div class="summary-panel">
-          <div class="summary-panel-title">Key Population &amp; Vital Statistics Summary</div>
-          <div class="summary-label">Summary Highlights</div>
-
-          <div class="summary-item">
-            <div class="summary-item-dot"></div>
-            <div class="summary-item-text">
-              <strong>Highest Provincial Population:</strong> NCR (15M)
-            </div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-item-dot"></div>
-            <div class="summary-item-text">
-              <strong>Population Distribution:</strong> Majority in central regions
-            </div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-item-dot"></div>
-            <div class="summary-item-text">
-              <strong>Primary Age Bracket:</strong> Young Population (0–14 Yrs)
-            </div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-item-dot"></div>
-            <div class="summary-item-text">
-              <strong>Highest Live Birth Attendance:</strong> Type: 90% (High Attendant)
-            </div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-item-dot"></div>
-            <div class="summary-item-text">
-              <strong>Top Cause of Death:</strong> Cardiovascular Disease (CVD)
-            </div>
-          </div>
-          <div class="summary-item">
-            <div class="summary-item-dot"></div>
-            <div class="summary-item-text">
-              <strong>Data Completeness:</strong> 100% (Provincial level for PPV)
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /chart-summary -->
-
-    </div><!-- /left content -->
-
-    <!-- SIDEBAR -->
-    <div class="sidebar animate-in" style="animation-delay:0.10s;">
-      <div class="sidebar-block">
-        <div class="sidebar-block-header">Related Links</div>
-        <div class="sidebar-block-body">
-          <a href="#" class="sidebar-link">User's Guide</a>
-          <a href="#" class="sidebar-link">Metadata Dictionary</a>
-          <a href="#" class="sidebar-link">Related Publications</a>
-        </div>
-      </div>
-      <div class="sidebar-block">
-        <div class="sidebar-block-header">Contact Us</div>
-        <div class="sidebar-block-body">
-          <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-            <img src="Img/OpenStat-Logo.png" alt="PSA" class="contact-logo"/>
-          </div>
-          <div class="contact-text">
-            For data inquiries, contact:<br/><br/>
-            <strong>Knowledge Management and Communication Division (KMCD)</strong>
-            <strong>Philippine Statistics Authority</strong>
-            9/F PSA Headquarters PSA Complex, East Avenue, Diliman, Quezon City<br/><br/>
-            Email: <a href="mailto:info@psa.gov.ph">info@psa.gov.ph</a>
-          </div>
-        </div>
-      </div>
+    <!-- Breadcrumb -->
+    <div class="hero-title text-[12.5px] font-semibold mb-3" style="color:rgba(255,255,255,0.75);">
+      <?php foreach ($breadcrumbs as $i => $crumb): ?>
+        <?php if ($i > 0): ?><span class="mx-1.5" style="opacity:0.5;">></span><?php endif; ?>
+        <?php if (!empty($crumb['href'])): ?>
+          <a href="<?= htmlspecialchars($crumb['href']) ?>"
+             style="color:rgba(255,255,255,0.75);text-decoration:none;"
+             onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">
+            <?= htmlspecialchars($crumb['label']) ?>
+          </a>
+        <?php else: ?>
+          <span style="color:#fff;"><?= htmlspecialchars($crumb['label']) ?></span>
+        <?php endif; ?>
+      <?php endforeach; ?>
     </div>
 
-  </div><!-- /content-sidebar -->
+    <h1 class="hero-title text-[30px] font-bold text-white mb-2"
+        style="text-shadow:0 2px 14px rgba(0,0,0,0.5);">
+      <?= htmlspecialchars($page_title) ?>
+    </h1>
+    <p class="hero-desc text-[13.5px] max-w-[600px] leading-relaxed"
+       style="color:rgba(255,255,255,0.80);text-shadow:0 1px 6px rgba(0,0,0,0.35);">
+      <?= htmlspecialchars($page_description) ?>
+    </p>
 
-</div><!-- /main-wrap -->
+  </div>
+</div>
 
-<!-- FOOTER -->
-<footer>
+<!-- ══════════════════ MAIN LAYOUT ══════════════════ -->
+<div style="display:grid;grid-template-columns:190px 1fr;max-width:1180px;margin:0 auto;padding:20px 16px 50px;gap:0;">
+
+  <!-- ── LEFT: Category Sidebar ── -->
+  <div class="animate-in" style="animation-delay:0.05s;padding-right:0;padding-top:4px;">
+    <div style="background:#fff;border-radius:10px;border:1px solid #e0e0e0;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,0.07);">
+      <div style="background:#1a3269;color:#fff;font-size:13.5px;font-weight:700;padding:11px 18px;">
+        Category
+      </div>
+      <?php foreach ($categories as $cat): ?>
+      <a href="<?= htmlspecialchars($cat['href']) ?>"
+         class="cat-item <?= $cat['active'] ? 'active' : '' ?>">
+        <?= htmlspecialchars($cat['label']) ?>
+      </a>
+      <?php endforeach; ?>
+    </div>
+  </div>
+
+  <!-- ── RIGHT: Content Panel ── -->
+  <div class="animate-in" style="animation-delay:0.10s;padding-left:16px;">
+
+    <!-- Filter Bar -->
+    <div style="background:#fff;border-radius:10px 10px 0 0;border:1px solid #e0e0e0;border-bottom:none;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,0.07);">
+
+      <div class="filter-bar">
+        <!-- Quick Filters label -->
+        <div class="quick-filter-label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none"
+               viewBox="0 0 24 24" stroke="#6b7280" stroke-width="2.2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M3 4h18M7 8h10M11 12h2M9 16h6"/>
+          </svg>
+          Quick Filters
+        </div>
+
+        <!-- Search -->
+        <div class="search-box">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none"
+               viewBox="0 0 24 24" stroke="#9ca3af" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+          </svg>
+          <input type="text" placeholder="Search for datasets"/>
+        </div>
+
+        <!-- Category dropdown -->
+        <div class="filter-select">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none"
+               viewBox="0 0 24 24" stroke="#6b7280" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+          </svg>
+          <select>
+            <?php foreach ($filter_categories as $opt): ?>
+            <option><?= htmlspecialchars($opt) ?></option>
+            <?php endforeach; ?>
+          </select>
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none"
+               viewBox="0 0 24 24" stroke="#6b7280" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </div>
+
+        <!-- Geolocation dropdown -->
+        <div class="filter-select">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none"
+               viewBox="0 0 24 24" stroke="#6b7280" stroke-width="2">
+            <circle cx="12" cy="10" r="3"/>
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7z"/>
+          </svg>
+          <select>
+            <?php foreach ($filter_geolocations as $opt): ?>
+            <option><?= htmlspecialchars($opt) ?></option>
+            <?php endforeach; ?>
+          </select>
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none"
+               viewBox="0 0 24 24" stroke="#6b7280" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </div>
+
+        <!-- Year dropdown -->
+        <div class="filter-select">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none"
+               viewBox="0 0 24 24" stroke="#6b7280" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 2v4M8 2v4M3 10h18"/>
+          </svg>
+          <select>
+            <?php foreach ($filter_years as $opt): ?>
+            <option><?= htmlspecialchars($opt) ?></option>
+            <?php endforeach; ?>
+          </select>
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none"
+               viewBox="0 0 24 24" stroke="#6b7280" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </div>
+
+      </div><!-- /filter-bar -->
+
+      <!-- Sort row -->
+      <div class="sort-row">
+        <h2 style="font-size:18px;font-weight:700;color:#111827;">
+          <?= htmlspecialchars($dataset_section_label) ?>
+        </h2>
+        <div class="sort-select">
+          <span style="color:#6b7280;font-weight:600;font-size:13px;">Sort by:</span>
+          <select>
+            <?php foreach ($sort_options as $opt): ?>
+            <option><?= htmlspecialchars($opt) ?></option>
+            <?php endforeach; ?>
+          </select>
+        </div>
+      </div>
+
+    </div><!-- /filter panel top -->
+
+    <!-- Dataset List -->
+    <div style="background:#fff;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 10px 10px;padding:16px 18px;box-shadow:0 1px 6px rgba(0,0,0,0.07);">
+      <?php foreach ($datasets as $i => $ds): ?>
+      <div class="dataset-item">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;">
+
+          <!-- Left: content -->
+          <div style="flex:1;">
+            <a href="<?= htmlspecialchars($ds['details']) ?>" class="dataset-num-title">
+              <?= ($i + 1) ?>. <?= htmlspecialchars($ds['title']) ?>
+            </a>
+            <div class="dataset-size-updated">
+              Size: <?= htmlspecialchars($ds['size']) ?>&nbsp;&nbsp;&nbsp;
+              Updated: <?= htmlspecialchars($ds['updated']) ?>
+            </div>
+            <?php foreach ($ds['meta'] as $mi => $m): ?>
+            <div class="dataset-meta-row">
+              <strong><?= ($mi + 1) ?>. <?= htmlspecialchars($m['label']) ?>:</strong>
+              <?= htmlspecialchars($m['val']) ?>
+            </div>
+            <?php endforeach; ?>
+          </div>
+
+          <!-- Right: buttons -->
+          <div style="display:flex;flex-direction:column;gap:8px;flex-shrink:0;padding-top:2px;">
+            <a href="<?= htmlspecialchars($ds['csv']) ?>" class="btn-csv">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none"
+                   viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 3v12"/>
+              </svg>
+              CSV
+            </a>
+            <a href="<?= htmlspecialchars($ds['details']) ?>" class="btn-details">Details</a>
+          </div>
+
+        </div>
+      </div>
+      <?php endforeach; ?>
+    </div><!-- /dataset list -->
+
+  </div><!-- /right content -->
+
+</div><!-- /main grid -->
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer style="background:#1f2937;color:#9ca3af;font-size:12px;padding:14px 36px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
   <span>2026 Philippine Statistics Authority. All content is public domain unless otherwise stated.</span>
   <div style="display:flex;align-items:center;gap:12px;">
-    <a href="#">Terms Of Use</a>
+    <a href="#" style="color:#9ca3af;text-decoration:none;"
+       onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#9ca3af'">Terms Of Use</a>
     <span style="color:#4b5563;">|</span>
-    <a href="#">Privacy Statement</a>
+    <a href="#" style="color:#9ca3af;text-decoration:none;"
+       onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#9ca3af'">Privacy Statement</a>
   </div>
 </footer>
 
@@ -549,23 +538,6 @@ function navClass($page, $activePage) {
     });
   }, { threshold: 0.06 });
   document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
-
-  const pill = document.getElementById('searchPill');
-  const btn  = document.getElementById('searchBtn');
-  const inp  = document.getElementById('searchInput');
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isOpen = pill.classList.toggle('open');
-    if (isOpen) setTimeout(() => inp.focus(), 360);
-    else { inp.value = ''; inp.blur(); }
-  });
-  document.addEventListener('click', (e) => {
-    if (!pill.contains(e.target)) { pill.classList.remove('open'); inp.value = ''; }
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') { pill.classList.remove('open'); inp.value = ''; inp.blur(); }
-  });
 </script>
-
 </body>
 </html>
