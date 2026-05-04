@@ -300,8 +300,10 @@ $nav_items = [
 <header class="navbar sticky top-0 z-50" style="box-shadow:0 2px 8px rgba(0,0,0,0.35);">
   <div class="bg-primary flex items-center justify-between px-12"
        style="min-height:88px;padding-top:8px;padding-bottom:8px;">
-    <img src="Img/Logos/PSAHeader.png" alt="Philippine Statistics Authority"
-         style="height:88px;width:auto;object-fit:contain;"/>
+    <a href="index.php">
+        <img class="logo-psa" src="Img/Logos/PSAHeader.png" alt="Philippine Statistics Authority"
+             style="height: 88px; width: auto; object-fit: contain;"/>
+      </a>
     <div style="margin-right:60px;">
       <img src="Img/Logos/OpenStat-White.png" alt="OpenSTAT"
            style="height:90px;width:auto;object-fit:contain;"/>

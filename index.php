@@ -252,8 +252,10 @@
   <!-- Top bar — identical to original on desktop -->
   <div class="header-bar bg-primary flex items-center justify-between px-12" style="min-height: 88px; padding-top: 8px; padding-bottom: 8px;">
     <div class="flex items-center gap-4">
-      <img class="logo-psa" src="Img/Logos/PSAHeader.png" alt="Philippine Statistics Authority"
-           style="height: 88px; width: auto; object-fit: contain;"/>
+      <a href="index.php">
+        <img class="logo-psa" src="Img/Logos/PSAHeader.png" alt="Philippine Statistics Authority"
+             style="height: 88px; width: auto; object-fit: contain;"/>
+      </a>
     </div>
     <div class="flex items-center gap-3">
       <div class="logo-openstat-wrap flex flex-col items-center justify-center gap-1" style="margin-right: 60px;">
@@ -534,7 +536,7 @@
 
             <a href="migration.php" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.17s;">
               <div class="row-icon w-[52px] h-[52px] flex items-center justify-center flex-shrink-0">
-                <img src="Img/Icons/Social Statistics/Gender Statistics.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
+                <img src="Img/Icons/Social Statistics/Migration.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
               </div>
               <span class="stat-label text-[14px] font-bold text-gray-800">Migration</span>
             </a>
