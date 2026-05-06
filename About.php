@@ -11,7 +11,7 @@ $active_nav       = 'about';
 
 /* ── Breadcrumb trail ── */
 $breadcrumbs = [
-  ['label' => 'About', 'href' => ''],
+  ['label' => 'About >', 'href' =>  'about.php'],
 ];
 
 /* ── Navigation items ── */
@@ -76,10 +76,10 @@ $nav_items = [
     }
     .hero-title { animation: heroFadeIn 0.7s 0.15s cubic-bezier(.22,1,.36,1) both; }
 
-    /* ── Section underline ── */
+    /* ── Section underline — YELLOW ── */
     .section-underline {
       width: 48px; height: 4px;
-      background: #1a3269; border-radius: 2px;
+      background: #f5a623; border-radius: 2px;
       margin-top: 8px; margin-bottom: 24px;
     }
 
@@ -88,63 +88,91 @@ $nav_items = [
       display: flex; align-items: flex-start; gap: 18px; margin-bottom: 22px;
     }
     .intro-icon {
-      flex-shrink: 0; width: 52px; height: 52px;
-      background: #dce8f7; border-radius: 50%;
+      flex-shrink: 0; width: 72px; height: 72px;
       display: flex; align-items: center; justify-content: center;
     }
-    .intro-icon img { width: 32px; height: 32px; object-fit: contain; }
-    .intro-text { font-size: 13.5px; color: #374151; line-height: 1.85; text-align: justify; }
+    .intro-icon img { width: 72px; height: 72px; object-fit: contain; }
+    .intro-text { font-size: 15.5px; color: #374151; line-height: 1.85; text-align: justify; }
 
-    /* ── Objective cards — compact horizontal (icon left, text right) ── */
-    .obj-card {
+    /* ── Objectives wrapper — single large white rounded card ── */
+    .objectives-wrapper {
       background: #fff;
-      border: 1.5px solid #dce8f7;
-      border-radius: 12px;
-      padding: 14px 16px;
+      border-radius: 16px;
+      padding: 28px 28px 24px;
+      box-shadow: 0 3px 16px rgba(26,50,105,0.09);
+      margin-bottom: 24px;
+    }
+
+    /* ── Objective row divider ── */
+    .obj-row {
+      display: grid;
+      gap: 0;
+    }
+    .obj-row-top    { grid-template-columns: repeat(3, 1fr); border-bottom: 1.5px solid #e8eef7; padding-bottom: 20px; margin-bottom: 20px; }
+    .obj-row-bottom { grid-template-columns: repeat(4, 1fr); }
+
+    /* ── Individual objective item — icon top-left, text right ── */
+    .obj-item {
       display: flex;
       flex-direction: row;
-      align-items: center;
+      align-items: flex-start;
       gap: 14px;
-      box-shadow: 0 2px 8px rgba(26,50,105,0.07);
-      transition: box-shadow 0.2s, transform 0.2s;
+      padding: 8px 20px 8px 8px;
+      border-right: 1.5px solid #e8eef7;
     }
-    .obj-card:hover {
-      box-shadow: 0 5px 18px rgba(26,50,105,0.14);
-      transform: translateY(-2px);
-    }
+    .obj-item:last-child { border-right: none; }
+
     .obj-icon {
       flex-shrink: 0;
-      width: 44px; height: 44px;
-      display: flex; align-items: center; justify-content: center;
+      width: 52px; height: 52px;
+      display: flex; align-items: flex-start; justify-content: center;
+      padding-top: 2px;
     }
-    .obj-icon img { width: 40px; height: 40px; object-fit: contain; }
-    .obj-card p { font-size: 11.5px; color: #374151; line-height: 1.55; margin: 0; }
+    .obj-icon img { width: 48px; height: 48px; object-fit: contain; }
+    .obj-item p { font-size: 13.5px; color: #374151; line-height: 1.6; margin: 0; }
 
     /* ── CTA banner ── */
     .cta-banner {
-      background: #fff;
+      position: relative;
       border-radius: 16px;
       overflow: hidden;
       display: flex;
       align-items: center;
+      justify-content: center;
+      padding-left: 320px;
       box-shadow: 0 4px 18px rgba(26,50,105,0.10);
-      min-height: 160px;
+      min-height: 220px;
     }
-    .cta-banner .cta-img {
-      width: 280px; object-fit: cover;
-      align-self: stretch; flex-shrink: 0;
+    .cta-banner .cta-bg {
+      position: absolute;
+      inset: 8px;
+      width: calc(100% - 16px);
+      height: calc(100% - 16px);
+      object-fit: cover;
+      object-position: center left;
+      z-index: 0;
+      border-radius: 10px;
     }
-    .cta-text {
-      padding: 28px 36px;
-      font-size: 17px; font-weight: 700;
-      color: #1a3269; line-height: 1.65;
+   .cta-text {
+      position: relative;
+      display: flex;
+      align-items: center;
+      align-self: stretch;
+      z-index: 1;
+      font-size: 20px;
+      font-weight: 1000;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 480px;
     }
 
-    @media (max-width: 768px) {
-      .cta-banner { flex-direction: column; }
-      .cta-banner .cta-img { width: 100%; height: 180px; }
+    @media (max-width: 900px) {
+      .obj-row-top    { grid-template-columns: 1fr; }
+      .obj-row-bottom { grid-template-columns: repeat(2,1fr); }
+      .obj-item { border-right: none; border-bottom: 1.5px solid #e8eef7; padding-bottom: 14px; }
+      .cta-banner { flex-direction: column; justify-content: center; }
+      .cta-text { max-width: 100%; text-align: center; }
       .intro-block { flex-direction: column; align-items: center; text-align: center; }
-      .obj-card { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
@@ -172,7 +200,7 @@ $nav_items = [
 </header>
 
 <!-- ════ HERO ════ -->
-<div class="relative" style="min-height:130px;">
+<div class="relative" style="min-height:180px;">
   <img src="<?= htmlspecialchars($hero_image) ?>" alt=""
        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;"/>
   <div style="position:absolute;inset:0;background:rgba(4,17,61,0.72);z-index:1;"></div>
@@ -210,9 +238,10 @@ $nav_items = [
 
     <div style="flex:1;min-width:280px;">
 
+      <!-- Icon 1: Building -->
       <div class="intro-block">
         <div class="intro-icon">
-          <img src="Img/About/Building.png" alt="Building"/>
+          <img src="Img/About/Image 1.png" alt="Building"/>
         </div>
         <p class="intro-text">
           The Philippine Statistics Authority (PSA) is the primary statistical arm of the government.
@@ -222,6 +251,7 @@ $nav_items = [
         </p>
       </div>
 
+      <!-- Icon 2: Platform -->
       <div class="intro-block">
         <div class="intro-icon">
           <img src="Img/About/Image 2.png" alt="Platform"/>
@@ -234,6 +264,7 @@ $nav_items = [
         </p>
       </div>
 
+      <!-- Icon 3: Objectives intro -->
       <div class="intro-block">
         <div class="intro-icon">
           <img src="Img/About/Image 3.png" alt="Objectives"/>
@@ -255,58 +286,62 @@ $nav_items = [
 
   </div>
 
-  <!-- Objectives Row 1 — 3 cards -->
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px;">
+  <!-- ── Objectives: single large white card with two rows ── -->
+  <div class="objectives-wrapper">
 
-    <div class="obj-card">
-      <div class="obj-icon"><img src="Img/About/OpenData.png" alt="Open Data"/></div>
-      <p>Adherence to the Open Data Initiative.</p>
+    <!-- Row 1: 3 items -->
+    <div class="obj-row obj-row-top">
+
+      <div class="obj-item">
+        <div class="obj-icon"><img src="Img/About/OpenData.png" alt="Open Data"/></div>
+        <p>Adherence to the </br> Open Data Initiative.</p>
+      </div>
+
+      <div class="obj-item">
+        <div class="obj-icon"><img src="Img/About/sustainable.png" alt="SDG"/></div>
+        <p>Contribute towards achievement of Sustainable Development Goals</p>
+      </div>
+
+      <div class="obj-item">
+        <div class="obj-icon"><img src="Img/About/Facilitate.png" alt="Inclusive"/></div>
+        <p>Facilitate an inclusive, sustainable and resilient development</p>
+      </div>
+
     </div>
 
-    <div class="obj-card">
-      <div class="obj-icon"><img src="Img/About/Facilitate.png" alt="SDG"/></div>
-      <p>Contribute towards achievement of Sustainable Development Goals</p>
+    <!-- Row 2: 4 items -->
+    <div class="obj-row obj-row-bottom">
+
+      <div class="obj-item">
+        <div class="obj-icon"><img src="Img/About/National-Data.png" alt="National Data"/></div>
+        <p>Promote a National Data Sharing, Accessibility Policy and Standards</p>
+      </div>
+
+      <div class="obj-item">
+        <div class="obj-icon"><img src="Img/About/API.png" alt="API"/></div>
+        <p>Promote innovation through provision of Open Application Program Interfaces</p>
+      </div>
+
+      <div class="obj-item">
+        <div class="obj-icon"><img src="Img/About/Increase.png" alt="Utilization"/></div>
+        <p>Increase and improve the utilization of data for decision-making, citizen empowerment, innovation and entrepreneurship</p>
+      </div>
+
+      <div class="obj-item">
+        <div class="obj-icon"><img src="Img/About/Building.png" alt="Capacity"/></div>
+        <p>Support capacity building and innovation for the generation, sharing and utilization of data at national, regional and local level</p>
+      </div>
+
     </div>
 
-    <div class="obj-card">
-      <div class="obj-icon"><img src="Img/About/Image 3.png" alt="Inclusive"/></div>
-      <p>Facilitate an inclusive, sustainable and resilient development</p>
-    </div>
-
-  </div>
-
-  <!-- Objectives Row 2 — 4 cards -->
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:36px;">
-
-    <div class="obj-card">
-      <div class="obj-icon"><img src="Img/About/National-Data.png" alt="National Data"/></div>
-      <p>Promote a National Data Sharing, Accessibility Policy and Standards</p>
-    </div>
-
-    <div class="obj-card">
-      <div class="obj-icon"><img src="Img/About/API.png" alt="API"/></div>
-      <p>Promote innovation through provision of Open Application Program Interfaces</p>
-    </div>
-
-    <div class="obj-card">
-      <div class="obj-icon"><img src="Img/About/Increase.png" alt="Utilization"/></div>
-      <p>Increase and improve the utilization of data for decision-making, citizen empowerment, innovation and entrepreneurship</p>
-    </div>
-
-    <div class="obj-card">
-      <div class="obj-icon"><img src="Img/About/Building.png" alt="Capacity"/></div>
-      <p>Support capacity building and innovation for the generation, sharing and utilization of data at national, regional and local level</p>
-    </div>
-
-  </div>
+  </div><!-- end objectives-wrapper -->
 
   <!-- CTA Banner -->
-  <div class="cta-banner">
-    <img class="cta-img" src="Img/About/Image 1.png" alt="Team collaboration"/>
+  <div class="cta-banner" style="background:#fff;">
+    <img class="cta-bg" src="Img/About/About-BG.png" alt=""/>
     <div class="cta-text">
       PSA invites all agencies to join the open data initiative
-      to create a conducive environment for an open and
-      transparent governance.
+      to create a conducive environment for an open and transparent governance.
     </div>
   </div>
 

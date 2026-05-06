@@ -590,13 +590,13 @@
             <h2 class="text-[19px] font-bold text-primary leading-tight">Economic and Financial Statistics</h2>
           </div>
           <div class="flex flex-col gap-1">
-            <a href="national-accounts.php" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.10s;">
+            <a href="nat-accounts-template.php" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.10s;">
               <div class="row-icon w-[52px] h-[52px] flex items-center justify-center flex-shrink-0">
                 <img src="Img/Icons/Economic and Financial Statistics/National Accounts.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
               </div>
               <span class="stat-label text-[14px] font-bold text-gray-800">National Accounts</span>
             </a>
-            <a href="labor-statistics.php" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.13s;">
+            <a href="pop-pvs-template.php" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.13s;">
               <div class="row-icon w-[52px] h-[52px] flex items-center justify-center flex-shrink-0">
                 <img src="Img/Icons/Economic and Financial Statistics/Labor Statistics.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
               </div>

@@ -3,44 +3,91 @@
    PAGE CONFIGURATION — Edit everything here
    ============================================================ */
 
-$page_title       = 'Population and Vital Statistics';
-$page_description = 'Population and Vital Statistics (PVS) presents data on the size, composition, and characteristics of the population and vital events the occur in the country. These statistics support planning, policy-making, and research for social and economic development.';
+$page_title       = 'Economic Accounts';
+$page_description = 'Economic Accounts presents data on the economic indicators and statistics for the country. These statistics support planning, policy-making, and research for economic development.';
 $active_nav       = 'database';
 
-$hero_icon       = 'Img/Pop-Sub/Pop-Banner.png';
+$hero_icon       = 'Img/Eco-Acc/Economic-Accounts.png';
 $hero_bg_graphic = 'Img/Pop-Sub/Background.png';
 
 $categories_section_title    = 'Categories';
-$categories_section_subtitle = 'Explore the vital events and population data available in each category.';
+$categories_section_subtitle = 'Explore the economic indicators and statistics available in each category.';
+
 $categories = [
   [
-    'label'       => 'Population',
+    'label'       => 'National Accounts of the Philippines',
     'description' => 'Data on the total population size, population growth, density, and distribution by age, sex, and geographic area.',
-    'icon'        => 'Img/Pop-Sub/Population.png',
-    'href'        => 'pop-population.php',
+    'icon'        => 'Img/Eco-Acc/National Accounts.png',
+    'href'        => '',
     'count'       => '24 datasets',
+ 
   ],
   [
-    'label'       => 'Birth',
+    'label'       => 'Seasonally Adjusted National Accounts of the Philippines',
     'description' => 'Statistics on live birth including number of births, birth rates, age of mother and other birth-related characteristics.',
-    'icon'        => 'Img/Pop-Sub/Birth.png',
-    'href'        => 'pop-birth.php',
+     'icon'  => 'Img/Eco-Acc/National Accounts.png',
+    'href'        => '',
     'count'       => '18 datasets',
   ],
   [
-    'label'       => 'Death',
+    'label'       => 'Gross Regional Domestic Expenditure (GRDE)',
     'description' => 'Data on deaths including number of deaths, death rates, causes of death, age, sex, and other demographic details.',
-    'icon'        => 'Img/Pop-Sub/Death.png',
-    'href'        => 'pop-death.php',
+    'icon'        => 'Img/Eco-Acc/National Accounts.png',
+    'href'        => '',
     'count'       => '21 datasets',
   ],
   [
-    'label'       => 'Marriage',
+    'label'       => 'Gross Regional Domestic Product (GRDP)',
     'description' => 'Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.',
-    'icon'        => 'Img/Pop-Sub/Marriage.png',
+    'icon'        => 'Img/Eco-Acc/National Accounts.png',
+    'href'        => '',
+    'count'       => '15 datasets',
+  ],
+    [
+    'label'       => 'Provincial Product Accounts (PPA)',
+    'description' => 'Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.',
+    'icon'        => 'Img/Eco-Acc/National Accounts.png',
+    'href'        => '',
+    'count'       => '15 datasets',
+  ],
+    [
+    'label'       => 'Consolidated Accounts and Income and Outlay Accounts',
+    'description' => 'Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.',
+    'icon'        => 'Img/Eco-Acc/National Accounts.png',
+    'href'        => '',
+    'count'       => '15 datasets',
+    
+  ],
+    [
+    'label'       => 'Satellite Accounts',
+    'description' => 'Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.',
+    'icon'        => 'Img/Eco-Acc/National Accounts.png',
+    'href'        => '',
+    'count'       => '15 datasets',
+    'subcategories' => [
+      ['label' => 'Creative Economy', 'href' => '', 'count' => '6 datasets'],
+      ['label' => 'Digital Economy',        'href' => '',                             'count' => '4 datasets'],
+      ['label' => 'Tourism Satellite Account',    'href' => '',                             'count' => '7 datasets'],
+      ['label' => 'Sustainable Tourism',   'href' => '',                             'count' => '5 datasets'],
+      ['label' => 'Health Account',    'href' => '',                             'count' => '2 datasets'],
+      ['label' => 'Ocean Economy',    'href' => '',                             'count' => '2 datasets'],
+    ], 
+  ],
+    [
+    'label'       => 'Approved Investment',
+    'description' => 'Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.',
+    'icon'        => 'Img/Eco-Acc/National Accounts.png',
     'href'        => 'pop-marriage.php',
     'count'       => '15 datasets',
   ],
+   [
+    'label'       => 'Agricultural Accounts',
+    'description' => 'Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.',
+    'icon'        => 'Img/Eco-Acc/National Accounts.png',
+    'href'        => 'pop-marriage.php',
+    'count'       => '15 datasets',
+  ],
+
 ];
 
 $nav_items = [
