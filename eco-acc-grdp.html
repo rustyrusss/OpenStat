@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PSA OpenSTAT – Economic Accounts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { height: 100%; }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f0f0f0;
+      color: #1f2937;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── NAVBAR ─── */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.35);
+      animation: slideDown .45s cubic-bezier(.22,1,.36,1) both;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to   { transform: translateY(0);     opacity: 1; }
+    }
+    .nav-link {
+      display: inline-block; color: #fff; font-size: 15px; font-weight: 600;
+      text-decoration: none; padding: 13px 30px;
+      transition: background .15s; white-space: nowrap;
+    }
+    .nav-link:hover      { background: rgba(255,255,255,.12); }
+    .nav-link.active-nav { background: rgba(255,255,255,.20); font-weight: 700; }
+
+    /* ─── HERO BANNER ─── */
+    .hero-banner {
+      position: relative;
+      overflow: hidden;
+      background: #e8ecf2;
+      padding: 60px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 320px;
+      width: 100%;
+    }
+    .hero-bg-img {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+      object-position: right center;
+      opacity: 0.30;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 30%);
+      mask-image: linear-gradient(to right, transparent 0%, black 30%);
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: flex; align-items: center; gap: 36px;
+      width: 100%;
+      max-width: 960px;
+      animation: fadeUp .5s .06s cubic-bezier(.22,1,.36,1) both;
+    }
+    .hero-icon-box {
+      flex-shrink: 0;
+      width: 140px; height: 140px;
+      background: #1a3269;
+      border-radius: 22px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(26,50,105,.28);
+    }
+    .hero-icon-box img { width: 90px; height: 90px; object-fit: contain; }
+    .hero-text h1 {
+      font-size: 30px; font-weight: 800; color: #1a3269;
+      margin-bottom: 14px; line-height: 1.2;
+    }
+    .hero-text p {
+      font-size: 14px; color: #374151; line-height: 1.8; max-width: 580px;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── MAIN AREA ─── */
+    .main-wrap {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 30px 32px 60px;
+    }
+
+    /* ─── SECTION HEADER ─── */
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .section-title {
+      font-size: 20px; font-weight: 800; color: #1a3269;
+    }
+    .section-sub {
+      font-size: 13px; color: #6b7280; margin-bottom: 20px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #1f2937; color: #9ca3af;
+      font-size: 12px; padding: 14px 36px;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    }
+    footer a { color: #9ca3af; text-decoration: none; }
+    footer a:hover { color: #fff; }
+  </style>
+  <link rel="stylesheet" href="assets/css/category-list.css"/>
+  <link rel="stylesheet" href="assets/css/scroll-top.css"/>
+</head>
+<body>
+
+<!-- ════ NAVBAR ════ -->
+<header class="navbar">
+  <div style="background:#1a3269; display:flex; align-items:center; justify-content:space-between; padding:8px 48px; min-height:88px;">
+    <div>
+      <img src="Img/Logos/PSAHeader.png" alt="Philippine Statistics Authority" style="height:88px; width:auto; object-fit:contain;"/>
+    </div>
+    <div style="margin-right:60px;">
+      <img src="Img/Logos/OpenStat-White.png" alt="OpenSTAT" style="height:90px; width:auto; object-fit:contain;"/>
+    </div>
+  </div>
+  <nav style="background:#142a56; display:flex; align-items:center; justify-content:center;">
+    <a href="index.php"    class="nav-link">Home</a>
+    <a href="about.php"    class="nav-link">About</a>
+    <a href="database.php" class="nav-link active-nav">Database</a>
+    <a href="dashboard.php"class="nav-link">Dashboard</a>
+    <a href="featured.php" class="nav-link">Featured</a>
+    <a href="contact.php"  class="nav-link">Contact Us</a>
+  </nav>
+</header>
+
+<!-- ════ HERO BANNER ════ -->
+<section class="hero-banner">
+  <img src="Img/Pop-Sub/Background.png" alt="" class="hero-bg-img" aria-hidden="true"/>
+
+  <!-- Breadcrumb -->
+  <nav style="position:absolute; top:16px; left:50%; transform:translateX(-50%); z-index:2;
+              width:100%; max-width:960px; padding:0 12px;
+              display:flex; align-items:center; gap:8px; font-size:13px;">
+    <a href="database.php" style="color:#4b6cb7; text-decoration:none; font-weight:600; transition:color .15s;"
+       onmouseover="this.style.color='#1a3269'" onmouseout="this.style.color='#4b6cb7'">Database</a>
+    <span style="color:#9ca3af; font-size:12px;">›</span>
+   <a href="eco-acc.html" style="color:#4b6cb7; text-decoration:none; font-weight:600; transition:color .15s;"
+       onmouseover="this.style.color='#1a3269'" onmouseout="this.style.color='#4b6cb7'">Economic Accounts</a>
+     <span style="color:#9ca3af; font-size:12px;">›</span>
+     <span style="color:#1a3269; font-weight:700;">Gross Regional Domestic Product</span>
+  </nav>
+
+  <div class="hero-inner">
+    <div class="hero-icon-box">
+      <img src="Img/Eco-Acc/Economic-Accounts.png" alt="Economic Accounts icon"/>
+    </div>
+    <div class="hero-text">
+      <h1>Gross Regional Domestic Product</h1>
+      <p>Economic Accounts presents data on the economic indicators and statistics for the country. These statistics support planning, policy-making, and research for economic development.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ MAIN CONTENT ════ -->
+<div class="main-wrap">
+
+  <div class="section-header">
+    <h2 class="section-title">Categories</h2>
+  </div>
+  <p class="section-sub">Explore the economic indicators and statistics available in each category.</p>
+
+  <!-- ══ CATEGORY LIST ══ -->
+  <div class="cl-list">
+<!-- 2. By type of Expenditure (with NIR, as of April 2026) (expandable) -->
+<div class="cl-item" style="animation-delay: 0.04s;">
+  <a href="javascript:void(0)" class="cl-card" onclick="return clCardClick(event, this)">
+    <div class="cl-icon">
+      <img src="Img/Eco-Acc/National Accounts.png" alt="National Accounts of the Philippines icon"/>
+    </div>
+    <div class="cl-info">
+      <h3>By type of Expenditure (with NIR, as of April 2026)</h3>
+      <p>Data on the total population size, population growth, density, and distribution by age, sex, and geographic area.</p>
+    </div>
+    <div class="cl-meta">
+      <button class="cl-expand-btn" title="Show subcategories" onclick="clToggle(event, this)">
+        <span class="icon-plus">+</span>
+        <span class="icon-minus">−</span>
+      </button>
+    </div>
+  </a>
+
+  <div class="cl-sub-panel">
+    <div class="cl-sub-inner">
+
+      <a href="eco-acc-grdp-Philippines.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          PHILIPPINES
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-ncr.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          National Capital Region
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-car.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Cordillera Administrative Region
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-region-1.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Region I - Ilocos Region
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-region-2.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Region II - Cagayan Valley
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-region-3.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Region III - Central Luzon
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-region-4a.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Region IV-A - CALABARZON
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-mimaropa.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          MIMAROPA Region
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-region-5.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Region V - Bicol Region
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-region-6.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Region VI - Western Visayas
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-negros-island.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Negros Island Region
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-region-7.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Region VII - Central Visayas
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-region-8.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Region VIII - Eastern Visayas
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-region-9.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Region IX - Zamboanga Peninsula
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-region-10.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Region X - Northern Mindanao
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-region-11.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Region XI - Davao Region
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-region-12.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Region XII - SOCCSKSARGEN
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-region-13.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Region XIII - Caraga
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-armm.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Autonomous Region in Muslim Mindanao
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+    </div>
+  </div>
+</div>
+    
+    <!-- 1. By Region (with NIR, as of April 2026) (expandable) -->
+<div class="cl-item" style="animation-delay: 0.04s;">
+  <a href="javascript:void(0)" class="cl-card" onclick="return clCardClick(event, this)">
+    <div class="cl-icon">
+      <img src="Img/Eco-Acc/National Accounts.png" alt="By Region with NIR icon"/>
+    </div>
+    <div class="cl-info">
+      <h3>By Region (with NIR, as of April 2026)</h3>
+      <p>Data on the total population size, population growth, density, and distribution by age, sex, and geographic area.</p>
+    </div>
+    <div class="cl-meta">
+      <!-- DATASETS COUNT — dynamic, do not hardcode
+      <span class="cl-count" data-category="by-region-nir-april-2026"></span>
+      -->
+      <button class="cl-expand-btn" title="Show subcategories" onclick="clToggle(event, this)">
+        <span class="icon-plus">+</span>
+        <span class="icon-minus">−</span>
+      </button>
+    </div>
+  </a>
+
+  <div class="cl-sub-panel">
+    <div class="cl-sub-inner">
+
+      <a href="eco-acc-grdp-grdpe.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Gross Regional Domestic Expenditure
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-grde"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-pcg.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Per Capita Gross Regional Domestic Expenditure
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-per-capita-grde"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-aff.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Agriculture, Forestry, and Fishing
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-hfce"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-ind.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Industry
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-gfce"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-imq.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Industry: Mining and Quarrying
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-gcf"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-inm.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+           Industry: Manufacturing
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-gfcf"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-inw.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Industry: Electricity, Steam, Water and Waste Management
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-gfcf-construction"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-inc.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Industry: Construction
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-gfcf-durable-equipment"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svc.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-breeding-stocks"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="grde-region-nir-intellectual-property.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Wholesale and Retail Trade; Repair of Motor Vehicles and Motorcycles
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-intellectual-property"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svts.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Transportation and storage
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-changes-inventories"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svaf.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Accommodation and food service activities
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-valuables"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svic.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Information and communication 
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-exports-goods-services"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svfi.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Financial and insurance activities
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-exports-goods"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svre.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Real Estate and Ownership of Dwellings
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-exports-services"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svpb.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Professional and business services
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-imports-goods-services"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svps.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Public Administration & Defense; Compulsory Social Security
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-imports-goods"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-sved.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Education
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-imports-services"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svhw.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Human health and social work activities
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-net-exports"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svts.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Other Services
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-per-capita-hfce"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+    </div><!-- /.cl-sub-inner -->
+  </div><!-- /.cl-sub-panel -->
+</div><!-- /.cl-item -->
+  <!-- 3. By Region (without NIR, as of April 2024)(expandable) -->
+    <div class="cl-item" style="animation-delay: 0.04s;">
+      <a href="javascript:void(0)" class="cl-card" onclick="return clCardClick(event, this)">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="National Accounts of the Philippines icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>By type of Expenditure (without NIR, as of April 2024)</h3>
+          <p>Data on the total population size, population growth, density, and distribution by age, sex, and geographic area.</p>
+        </div>
+        <div class="cl-meta">
+          <button class="cl-expand-btn" title="Show subcategories" onclick="clToggle(event, this)">
+            <span class="icon-plus">+</span>
+            <span class="icon-minus">−</span>
+          </button>
+        </div>
+      </a>
+
+      <div class="cl-sub-panel">
+        <div class="cl-sub-inner">
+
+          <a href="eco-acc-grdp-ph-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+              PHILIPPINES
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+          <a href="eco-acc-grdp-ncr-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+              National Capital Region
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+          <a href="eco-acc-grdp-car-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+              Cordillera Administrative Region
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+           <a href="eco-acc-grdp-region-1-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+              Region I - Ilocos Region
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+          <a href="eco-acc-grdp-region-2-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+              Region II - Cagayan Valley
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+
+           <a href="eco-acc-grdp-region-3-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+              Region III - Central Luzon
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+          <a href="eco-acc-grdp-region-4a-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+             Region IV-A - CALABARZON
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+          <a href="eco-acc-grdp-mimaropa-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+             MIMAROPA Region
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+          <a href="eco-acc-grdp-region-5-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+             Region V - Bicol Region
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+           <a href="eco-acc-grdp-region-6-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+             Region VI - Western Visaya
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+
+           <a href="eco-acc-grdp-region-nir-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+             Negros Island Region
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+
+           <a href="eco-acc-grdp-region-7-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+             Region VII - Central Visayas
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+          <a href="eco-acc-region-8-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+             Region VIII - Eastern Visayas
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+          <a href="eco-acc-grdp-region-9-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+             Region IX - Zamboanga Peninsula
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+             <a href="eco-acc-grdp-region-10-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+             Region X - Northern Mindanao
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+            </a>
+             <a href="eco-acc-grdp-region-11-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+             Region XI - Davao Region
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+            </a>
+             <a href="eco-acc-grdp-region-12-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+             Region XII - SOCCSKSARGEN
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+           <a href="eco-acc-region-13-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+             Region XIII - Caraga
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+           <a href="eco-acc-grdp-armm-wonir.html" class="cl-sub-item">
+            <span class="cl-sub-left">
+              <span class="cl-sub-dot" aria-hidden="true"></span>
+             Autonomous Region in Muslim Mindanao
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <span class="cl-sub-arrow" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </span>
+          </a>
+
+        </div>
+      </div>
+    </div>
+      <!-- 4. By type of Expenditure (without NIR, as of April 2024) (expandable) -->
+    <div class="cl-item" style="animation-delay: 0.04s;">
+      <a href="javascript:void(0)" class="cl-card" onclick="return clCardClick(event, this)">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="National Accounts of the Philippines icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>By Region (without NIR, as of April 2024)</h3>
+          <p>Data on the total population size, population growth, density, and distribution by age, sex, and geographic area.</p>
+        </div>
+        <div class="cl-meta">
+          <button class="cl-expand-btn" title="Show subcategories" onclick="clToggle(event, this)">
+            <span class="icon-plus">+</span>
+            <span class="icon-minus">−</span>
+          </button>
+        </div>
+      </a>
+
+      <div class="cl-sub-panel">
+    <div class="cl-sub-inner">
+
+      <a href="eco-acc-grdp-grdpe-2024.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Gross Regional Domestic Expenditure
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-grde"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-pcg-2024.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Per Capita Gross Regional Domestic Expenditure
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-per-capita-grde"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-aff-2024.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Agriculture, Forestry, and Fishing
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-hfce"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-ind-2024.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Industry
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-gfce"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-imq-2024.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Industry: Mining and Quarrying
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-gcf"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-inm-2024.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+           Industry: Manufacturing
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-gfcf"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-inw.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Industry: Electricity, Steam, Water and Waste Management
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-gfcf-construction"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-inc-2024.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Industry: Construction
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-gfcf-durable-equipment"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svc-2024.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-breeding-stocks"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svc-wrt-2024.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Wholesale and Retail Trade; Repair of Motor Vehicles and Motorcycles
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-intellectual-property"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svts-2024.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Transportation and storage
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-changes-inventories"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svaf-2024.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Accommodation and food service activities
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-valuables"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svic-2024.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Information and communication 
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-exports-goods-services"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svfi-2024.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Financial and insurance activities
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-exports-goods"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svre.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Real Estate and Ownership of Dwellings
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-exports-services"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svpb-2024.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Professional and business services
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-imports-goods-services"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svps-2024.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Public Administration & Defense; Compulsory Social Security
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-imports-goods"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-sved-2024.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Education
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-imports-services"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svhw-2024.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Human health and social work activities
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-net-exports"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      <a href="eco-acc-grdp-svts-2024.html" class="cl-sub-item">
+        <span class="cl-sub-left">
+          <span class="cl-sub-dot" aria-hidden="true"></span>
+          Services: Other Services
+        </span>
+        <span style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <!-- DATASETS COUNT — dynamic, do not hardcode
+          <span class="cl-sub-count" data-subcategory="region-nir-per-capita-hfce"></span>
+          -->
+          <span class="cl-sub-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a3269" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </span>
+      </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+</div><!-- /.main-wrap -->
+
+<button id="scroll-top-btn" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+       stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <span>2026 Philippine Statistics Authority. All content is public domain unless otherwise stated.</span>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <a href="#">Terms Of Use</a>
+    <span style="color:#4b5563;">|</span>
+    <a href="#">Privacy Statement</a>
+  </div>
+</footer>
+
+<script src="assets/js/category-list.js"></script>
+<script src="assets/js/scroll-top.js"></script>
+
+</body>
+</html>
