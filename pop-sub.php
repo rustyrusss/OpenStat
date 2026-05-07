@@ -18,28 +18,28 @@ $categories = [
     'description' => 'Data on the total population size, population growth, density, and distribution by age, sex, and geographic area.',
     'icon'        => 'Img/Pop-Sub/Population.png',
     'href'        => 'pop-population.php',
-    'count'       => '24 datasets',
+   /* 'count'       => '24 datasets', */
   ],
   [
     'label'       => 'Birth',
     'description' => 'Statistics on live birth including number of births, birth rates, age of mother and other birth-related characteristics.',
     'icon'        => 'Img/Pop-Sub/Birth.png',
     'href'        => 'pop-birth.php',
-    'count'       => '18 datasets',
+    // 'count'       => '18 datasets',
   ],
   [
     'label'       => 'Death',
     'description' => 'Data on deaths including number of deaths, death rates, causes of death, age, sex, and other demographic details.',
-    'icon'        => 'Img/Pop-Sub/Death.png',
+    'icon'        => 'img/Pop-sub/death.png',
     'href'        => 'pop-death.php',
-    'count'       => '21 datasets',
+    // 'count'       => '21 datasets',
   ],
   [
     'label'       => 'Marriage',
     'description' => 'Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.',
     'icon'        => 'Img/Pop-Sub/Marriage.png',
     'href'        => 'pop-marriage.php',
-    'count'       => '15 datasets',
+    //'count'       => '15 datasets',
   ],
 ];
 
@@ -264,7 +264,7 @@ $nav_items = [
         </div>
 
         <div class="cl-meta">
-          <span class="cl-count"><?= htmlspecialchars($cat['count']) ?></span>
+          <!-- <span class="cl-count"><?= htmlspecialchars($cat['count']) ?></span> -->
 
           <?php if ($hasSubs): ?>
           <button class="cl-expand-btn" title="Show subcategories" onclick="clToggle(event, this)">

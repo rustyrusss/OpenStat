@@ -534,7 +534,7 @@
               </div>
             </div>
 
-            <a href="migration.php" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.17s;">
+            <a href="eco-acc.html" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.17s;">
               <div class="row-icon w-[52px] h-[52px] flex items-center justify-center flex-shrink-0">
                 <img src="Img/Icons/Social Statistics/Migration.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
               </div>
@@ -590,7 +590,7 @@
             <h2 class="text-[19px] font-bold text-primary leading-tight">Economic and Financial Statistics</h2>
           </div>
           <div class="flex flex-col gap-1">
-            <a href="nat-accounts-template.php" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.10s;">
+            <a href="eco-acc.html" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.10s;">
               <div class="row-icon w-[52px] h-[52px] flex items-center justify-center flex-shrink-0">
                 <img src="Img/Icons/Economic and Financial Statistics/National Accounts.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
               </div>

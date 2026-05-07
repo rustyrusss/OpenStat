@@ -17,4 +17,11 @@ function clCardClick(event, anchor) {
   if (event.target.closest('.cl-expand-btn')) return false; // let button handle it
   anchor.closest('.cl-item').classList.toggle('is-open');
   return false;
+  
+  function clSubToggle(event, btn) {
+  event.stopPropagation();
+  event.preventDefault();
+  const wrap = btn.closest('.cl-sub-item-wrap');
+  wrap.classList.toggle('cl-sub-open');
+}
 }
