@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PSA OpenSTAT – Economic Accounts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { height: 100%; }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f0f0f0;
+      color: #1f2937;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── NAVBAR ─── */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.35);
+      animation: slideDown .45s cubic-bezier(.22,1,.36,1) both;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to   { transform: translateY(0);     opacity: 1; }
+    }
+    .nav-link {
+      display: inline-block; color: #fff; font-size: 15px; font-weight: 600;
+      text-decoration: none; padding: 13px 30px;
+      transition: background .15s; white-space: nowrap;
+    }
+    .nav-link:hover      { background: rgba(255,255,255,.12); }
+    .nav-link.active-nav { background: rgba(255,255,255,.20); font-weight: 700; }
+
+    /* ─── HERO BANNER ─── */
+    .hero-banner {
+      position: relative;
+      overflow: hidden;
+      background: #e8ecf2;
+      padding: 60px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 320px;
+      width: 100%;
+    }
+    .hero-bg-img {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+      object-position: right center;
+      opacity: 0.30;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 30%);
+      mask-image: linear-gradient(to right, transparent 0%, black 30%);
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: flex; align-items: center; gap: 36px;
+      width: 100%;
+      max-width: 960px;
+      animation: fadeUp .5s .06s cubic-bezier(.22,1,.36,1) both;
+    }
+    .hero-icon-box {
+      flex-shrink: 0;
+      width: 140px; height: 140px;
+      background: #1a3269;
+      border-radius: 22px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(26,50,105,.28);
+    }
+    .hero-icon-box img { width: 90px; height: 90px; object-fit: contain; }
+    .hero-text h1 {
+      font-size: 30px; font-weight: 800; color: #1a3269;
+      margin-bottom: 14px; line-height: 1.2;
+    }
+    .hero-text p {
+      font-size: 14px; color: #374151; line-height: 1.8; max-width: 580px;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── MAIN AREA ─── */
+    .main-wrap {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 30px 32px 60px;
+    }
+
+    /* ─── SECTION HEADER ─── */
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .section-title {
+      font-size: 20px; font-weight: 800; color: #1a3269;
+    }
+    .section-sub {
+      font-size: 13px; color: #6b7280; margin-bottom: 20px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #1f2937; color: #9ca3af;
+      font-size: 12px; padding: 14px 36px;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    }
+    footer a { color: #9ca3af; text-decoration: none; }
+    footer a:hover { color: #fff; }
+  </style>
+  <link rel="stylesheet" href="assets/css/category-list.css"/>
+  <link rel="stylesheet" href="assets/css/scroll-top.css"/>
+</head>
+<body>
+
+<!-- ════ NAVBAR ════ -->
+<header class="navbar">
+  <div style="background:#1a3269; display:flex; align-items:center; justify-content:space-between; padding:8px 48px; min-height:88px;">
+    <div>
+      <img src="Img/Logos/PSAHeader.png" alt="Philippine Statistics Authority" style="height:88px; width:auto; object-fit:contain;"/>
+    </div>
+    <div style="margin-right:60px;">
+      <img src="Img/Logos/OpenStat-White.png" alt="OpenSTAT" style="height:90px; width:auto; object-fit:contain;"/>
+    </div>
+  </div>
+  <nav style="background:#142a56; display:flex; align-items:center; justify-content:center;">
+    <a href="index.php"    class="nav-link">Home</a>
+    <a href="about.php"    class="nav-link">About</a>
+    <a href="database.php" class="nav-link active-nav">Database</a>
+    <a href="dashboard.php"class="nav-link">Dashboard</a>
+    <a href="featured.php" class="nav-link">Featured</a>
+    <a href="contact.php"  class="nav-link">Contact Us</a>
+  </nav>
+</header>
+
+<!-- ════ HERO BANNER ════ -->
+<section class="hero-banner">
+  <img src="Img/Pop-Sub/Background.png" alt="" class="hero-bg-img" aria-hidden="true"/>
+
+  <!-- Breadcrumb -->
+  <nav style="position:absolute; top:16px; left:50%; transform:translateX(-50%); z-index:2;
+              width:100%; max-width:960px; padding:0 12px;
+              display:flex; align-items:center; gap:8px; font-size:13px;">
+    <a href="database.php" style="color:#4b6cb7; text-decoration:none; font-weight:600; transition:color .15s;"
+       onmouseover="this.style.color='#1a3269'" onmouseout="this.style.color='#4b6cb7'">Database</a>
+    <span style="color:#9ca3af; font-size:12px;">›</span>
+   <a href="eco-acc.html" style="color:#4b6cb7; text-decoration:none; font-weight:600; transition:color .15s;"
+       onmouseover="this.style.color='#1a3269'" onmouseout="this.style.color='#4b6cb7'">Economic Accounts</a>
+      <span style="color:#9ca3af; font-size:12px;">›</span>
+    <span style="color:#4b6cb7; font-weight:700;">National Accounts of the Philippines</span>
+    <span style="color:#9ca3af; font-size:12px;">›</span>
+    <span style="color:#1a3269; font-weight:700;">Annual National Accounts</span>
+  </nav>
+
+  <div class="hero-inner">
+    <div class="hero-icon-box">
+      <img src="Img/Eco-Acc/Economic-Accounts.png" alt="Economic Accounts icon"/>
+    </div>
+    <div class="hero-text">
+      <h1>Seasonally Adjusted National Accounts of the Philippines</h1>
+      <p>Economic Accounts presents data on the economic indicators and statistics for the country. These statistics support planning, policy-making, and research for economic development.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ MAIN CONTENT ════ -->
+<div class="main-wrap">
+
+  <div class="section-header">
+    <h2 class="section-title">Categories</h2>
+  </div>
+  <p class="section-sub">Explore the economic indicators and statistics available in each category.</p>
+
+  <!-- ══ CATEGORY LIST ══ -->
+  <div class="cl-list">
+
+     <!-- 1. Summary -->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-grdp.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/GRDP.png" alt="Gross Regional Domestic Product icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Summary</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+     <!-- 2. Household Final Consumption Expenditure -->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-hfce.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Household Final Consumption Expenditure icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Household Final Consumption Expenditure</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+     <!-- 3. Durable Equipment -->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Durable Equipment</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+ <!-- 4. Export of Goods -->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-export.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Export of Goods icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Export of Goods</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+     <!-- 5. Export of Services -->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-export-services.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Export of Services icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Export of Services</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+     <!-- 6. Import of Goods -->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Import of Goods</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+       <!-- 7. Import of Services -->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Import of Services</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+       <!-- 8. Agriculture, Forestry, and Fishing -->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Agriculture, Forestry, and Fishing</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- 9. Mining and Quarrying -->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Mining and Quarrying</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+ 
+    <!-- 10. Manufacturing -->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Manufacturing</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+ 
+    <!--11. Electricity, Gas and Water Supply -->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Electricity, Gas and Water Supply</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+ 
+    <!-- 12. Construction -->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Construction</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+ 
+    <!-- 13. Wholesale and Retail Trade; Repair of Motor Vehicles and Motorcycles -->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Wholesale and Retail Trade; Repair of Motor Vehicles and Motorcycles</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+ 
+    <!-- 14. Transportation and Storage-->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Transportation and Storage</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- 15. Accomodation and Food Service Activities-->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Accomodation and Food Service Activities</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+     <!-- 16. Information and Communication-->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Information and Communication</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+     <!-- 17. Financial and Insurance Activities-->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Financial and Insurance Activities</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+     <!-- 18. Real Estate and Ownership of Dwellings-->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Real Estate and Ownership of Dwellings</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+     <!-- 19. Education-->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Education</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+     <!-- 20. Human Health and Social Work Activities-->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Human Health and Social Work Activities</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+     <!-- 21.Other Services-->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Other Services</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+
+     <!-- 22.Derived Indicators-->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Derived Indicators</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+
+     <!-- 23. Annual Gross Domestic Product Series (1946 to 2025)-->
+    <div class="cl-item" style="animation-delay: 0.22s;">
+      <a href="eco-acc-durable.html" class="cl-card">
+        <div class="cl-icon">
+          <img src="Img/Eco-Acc/National Accounts.png" alt="Durable Equipment icon"/>
+        </div>
+        <div class="cl-info">
+          <h3>Annual Gross Domestic Product Series (1946 to 2025)</h3>
+          <p>Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+        </div>
+        <div class="cl-meta">
+          <div class="cl-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+    
+ 
+        </div>
+      </div>
+    </div>
+
+</div><!-- /.main-wrap -->
+
+<button id="scroll-top-btn" aria-label="Back to top" title="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+       stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <span>2026 Philippine Statistics Authority. All content is public domain unless otherwise stated.</span>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <a href="#">Terms Of Use</a>
+    <span style="color:#4b5563;">|</span>
+    <a href="#">Privacy Statement</a>
+  </div>
+</footer>
+
+<script src="assets/js/category-list.js"></script>
+<script src="assets/js/scroll-top.js"></script>
+
+</body>
+</html>
