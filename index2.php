@@ -278,7 +278,7 @@
   <!-- Desktop nav — unchanged from original -->
   <nav id="desktopNav" class="flex items-center justify-center" style="background: #142a56; gap: 0;">
     <a href="index.php"     class="nav-blue-link active-nav">Home</a>
-    <a href="about.php"     class="nav-blue-link">About</a>
+    <a href="about.html"     class="nav-blue-link">About</a>
     <a href="database.php"  class="nav-blue-link">Database</a>
     <a href="dashboard.php" class="nav-blue-link">Dashboard</a>
     <a href="featured.php"  class="nav-blue-link">Featured</a>
@@ -471,7 +471,7 @@
           </div>
           <div class="flex flex-col gap-1">
 
-            <a href="pop-sub.php" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.08s;">
+            <a href="pop-sub.html" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.08s;">
               <div class="row-icon w-[52px] h-[52px] flex items-center justify-center flex-shrink-0">
                 <img src="Img/Icons/Social Statistics/Pop-Vit.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
               </div>
@@ -518,33 +518,33 @@
           <div class="flex flex-col gap-1">
             <a href="eco-acc.html" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.10s;">
               <div class="row-icon w-[52px] h-[52px] flex items-center justify-center flex-shrink-0">
-                <img src="Img/Icons/Economic and Financial Statistics/" alt="" style="width:48px;height:48px;object-fit:contain;"/>
+                <img src="Img/Icons/Economic and Financial Statistics/National Accounts.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
               </div>
               <span class="stat-label text-[14px] font-bold text-gray-800">Economic Accounts</span>
             </a>
 
             <a href="eco-acc.html" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.10s;">
               <div class="row-icon w-[52px] h-[52px] flex items-center justify-center flex-shrink-0">
-                <img src="Img/Icons/Economic and Financial Statistics/" alt="" style="width:48px;height:48px;object-fit:contain;"/>
+                <img src="Img/Icons/Economic and Financial Statistics/Service-Statistics.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
               </div>
               <span class="stat-label text-[14px] font-bold text-gray-800">Service Statistics</span>
             </a>
             
             <a href="pop-pvs-template.php" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.13s;">
               <div class="row-icon w-[52px] h-[52px] flex items-center justify-center flex-shrink-0">
-                <img src="Img/Icons/Economic and Financial Statistics/" alt="" style="width:48px;height:48px;object-fit:contain;"/>
+                <img src="Img/Icons/Economic and Financial Statistics/Agriculture-Forestry-Fisheries.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
               </div>
               <span class="stat-label text-[14px] font-bold text-gray-800">Agriculture, Forestry, Fisheries</span>
             </a>
             <a href="price-indexes.php" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.16s;">
               <div class="row-icon w-[52px] h-[52px] flex items-center justify-center flex-shrink-0">
-                <img src="Img/Icons/Economic and Financial Statistics/.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
+                <img src="Img/Icons/Economic and Financial Statistics/Mining-Manufacturing-Construction.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
               </div>
               <span class="stat-label text-[14px] font-bold text-gray-800">Mining, Manufacturing, Construction</span>
             </a>
             <a href="government-finance.php" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.19s;">
               <div class="row-icon w-[52px] h-[52px] flex items-center justify-center flex-shrink-0">
-                <img src="Img/Icons/Economic and Financial Statistics/LaborCost.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
+                <img src="Img/Icons/Economic and Financial Statistics/Labor-Cost.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
               </div>
               <span class="stat-label text-[14px] font-bold text-gray-800">Labor Cost</span>
             </a>
@@ -588,31 +588,31 @@
           <div class="flex flex-col gap-1">
             <a href="agriculture-land.php" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.10s;">
               <div class="row-icon w-[52px] h-[52px] flex items-center justify-center flex-shrink-0">
-                <img src="Img/Icons/Environmental Statistics/Agriculture and Land Use.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
+                <img src="Img/Icons/Environmental Statistics/Environment.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
               </div>
               <span class="stat-label text-[14px] font-bold text-gray-800">Environment</span>
             </a>
             <a href="resource-use.php" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.13s;">
               <div class="row-icon w-[52px] h-[52px] flex items-center justify-center flex-shrink-0">
-                <img src="Img/Icons/Environmental Statistics/" alt="" style="width:48px;height:48px;object-fit:contain;"/>
+                <img src="Img/Icons/Environmental Statistics/Child-Poverty.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
               </div>
               <span class="stat-label text-[14px] font-bold text-gray-800">Child Poverty</span>
             </a>
             <a href="energy.php" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.16s;">
               <div class="row-icon w-[52px] h-[52px] flex items-center justify-center flex-shrink-0">
-                <img src="Img/Icons/Environmental Statistics/" alt="" style="width:48px;height:48px;object-fit:contain;"/>
+                <img src="Img/Icons/Environmental Statistics/Information-Society.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
               </div>
               <span class="stat-label text-[14px] font-bold text-gray-800">Information Society</span>
             </a>
             <a href="pollution.php" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.19s;">
               <div class="row-icon w-[52px] h-[52px] flex items-center justify-center flex-shrink-0">
-                <img src="Img/Icons/Environmental Statistics/DecentWork.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
+                <img src="Img/Icons/Environmental Statistics/Decent-Work.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
               </div>
               <span class="stat-label text-[14px] font-bold text-gray-800">Decent Work</span>
             </a>
             <a href="built-environment.php" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.22s;">
               <div class="row-icon w-[52px] h-[52px] flex items-center justify-center flex-shrink-0">
-                <img src="Img/Icons/Environmental Statistics/Built Environment.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
+                <img src="Img/Icons/Environmental Statistics/Sustainable-Development.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
               </div>
               <span class="stat-label text-[14px] font-bold text-gray-800">Sustainable Development Goals</span>
             </a>

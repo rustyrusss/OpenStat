@@ -278,7 +278,7 @@
   <!-- Desktop nav — unchanged from original -->
   <nav id="desktopNav" class="flex items-center justify-center" style="background: #142a56; gap: 0;">
     <a href="index.php"     class="nav-blue-link active-nav">Home</a>
-    <a href="about.php"     class="nav-blue-link">About</a>
+    <a href="about.html"     class="nav-blue-link">About</a>
     <a href="database.php"  class="nav-blue-link">Database</a>
     <a href="dashboard.php" class="nav-blue-link">Dashboard</a>
     <a href="featured.php"  class="nav-blue-link">Featured</a>
@@ -471,14 +471,14 @@
           </div>
           <div class="flex flex-col gap-1">
 
-            <a href="pop-sub.php" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.08s;">
+            <a href="pop-sub.html" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.08s;">
               <div class="row-icon w-[52px] h-[52px] flex items-center justify-center flex-shrink-0">
                 <img src="Img/Icons/Social Statistics/Pop-Vit.png" alt="" style="width:48px;height:48px;object-fit:contain;"/>
               </div>
               <span class="stat-label text-[14px] font-bold text-gray-800">Population and Vital Statistics</span>
             </a>
 
-            <!-- <div class="stat-dropdown" style="animation-delay:0.11s;">
+            <div class="stat-dropdown" style="animation-delay:0.11s;">
               <button onclick="toggleDropdown('education-dropdown', this)"
                       class="stat-item w-full flex items-center gap-4 px-3 py-3 no-underline text-left bg-transparent border-none cursor-pointer"
                       style="border-radius:10px;">
@@ -532,7 +532,7 @@
                   </a>
                 </div>
               </div>
-            </div> -->
+            </div>
 
             <a href="eco-acc.html" class="stat-item flex items-center gap-4 px-3 py-3 no-underline" style="animation-delay:0.17s;">
               <div class="row-icon w-[52px] h-[52px] flex items-center justify-center flex-shrink-0">
