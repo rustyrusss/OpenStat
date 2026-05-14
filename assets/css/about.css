@@ -115,7 +115,7 @@ body {
 }
 
 /* ─── SECTION UNDERLINE — YELLOW ─── */
-.section-underline {
+.about-section-underline {
   width: 200px;
   height: 4px;
   background: #f5a623;
@@ -128,7 +128,7 @@ body {
   transition: transform 0.5s 0.15s cubic-bezier(.22,1,.36,1),
               opacity   0.4s 0.15s ease;
 }
-.section-underline.visible {
+.about-section-underline.about-visible {
   transform: scaleX(1);
   opacity: 1;
 }
@@ -142,8 +142,6 @@ body {
   flex-wrap: wrap;
 }
 .two-col-left { flex: 1; min-width: 280px; }
-
-
 
 .side-image {
   flex-shrink: 0;
@@ -162,7 +160,6 @@ body {
 }
 
 /* ─── INTRO BLOCKS ─── */
-
 .intro-block {
   display: flex;
   align-items: flex-start;
@@ -219,7 +216,7 @@ body {
   text-align: center;
   gap: 12px;
   padding: 8px 16px;
-  width: 100%;              /* ← add this */
+  width: 100%;
   border-right: 1.5px solid #e8eef7;
   transition: background .2s, transform .2s;
   border-radius: 8px;
@@ -231,15 +228,15 @@ body {
   width: 52px;
   height: 52px;
   display: flex;
-  align-items: center;      /* ← was "flex-start" */
+  align-items: center;
   justify-content: center;
 }
 .obj-icon img {
   width: 48px;
   height: 48px;
   object-fit: contain;
-  display: block;           /* ← add this */
-  margin: 0 auto;           /* ← add this */
+  display: block;
+  margin: 0 auto;
 }
 .obj-item p {
   font-size: 13.5px;
@@ -295,49 +292,50 @@ body {
   transition: opacity 0.7s 0.3s cubic-bezier(.22,1,.36,1),
               transform 0.7s 0.3s cubic-bezier(.22,1,.36,1);
 }
-.cta-banner.visible .cta-bg,
-.cta-banner.visible .cta-text {
+.cta-banner.about-visible .cta-bg,
+.cta-banner.about-visible .cta-text {
   opacity: 1;
   transform: translateX(0);
 }
 
 /* ════════════════════════════════════════
    SCROLL-TRIGGERED FADE-IN ANIMATIONS
+   (about-page-scoped class names)
    ════════════════════════════════════════ */
-.fade-in {
+.about-fade-in {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.6s cubic-bezier(.22,1,.36,1),
               transform 0.6s cubic-bezier(.22,1,.36,1);
 }
-.fade-in-left {
+.about-fade-in-left {
   opacity: 0;
   transform: translateX(-32px);
   transition: opacity 0.65s cubic-bezier(.22,1,.36,1),
               transform 0.65s cubic-bezier(.22,1,.36,1);
 }
-.fade-in-right {
+.about-fade-in-right {
   opacity: 0;
   transform: translateX(32px);
   transition: opacity 0.65s cubic-bezier(.22,1,.36,1),
               transform 0.65s cubic-bezier(.22,1,.36,1);
 }
 
-.fade-in.visible,
-.fade-in-left.visible,
-.fade-in-right.visible {
+.about-fade-in.about-visible,
+.about-fade-in-left.about-visible,
+.about-fade-in-right.about-visible {
   opacity: 1;
   transform: translate(0, 0);
 }
 
 /* Stagger delays */
-.stagger-children > *:nth-child(1) { transition-delay: 0s; }
-.stagger-children > *:nth-child(2) { transition-delay: 0.1s; }
-.stagger-children > *:nth-child(3) { transition-delay: 0.2s; }
-.stagger-children > *:nth-child(4) { transition-delay: 0.3s; }
-.stagger-children > *:nth-child(5) { transition-delay: 0.4s; }
-.stagger-children > *:nth-child(6) { transition-delay: 0.5s; }
-.stagger-children > *:nth-child(7) { transition-delay: 0.6s; }
+.about-stagger-children > *:nth-child(1) { transition-delay: 0s; }
+.about-stagger-children > *:nth-child(2) { transition-delay: 0.1s; }
+.about-stagger-children > *:nth-child(3) { transition-delay: 0.2s; }
+.about-stagger-children > *:nth-child(4) { transition-delay: 0.3s; }
+.about-stagger-children > *:nth-child(5) { transition-delay: 0.4s; }
+.about-stagger-children > *:nth-child(6) { transition-delay: 0.5s; }
+.about-stagger-children > *:nth-child(7) { transition-delay: 0.6s; }
 
 /* ─── FOOTER ─── */
 footer {

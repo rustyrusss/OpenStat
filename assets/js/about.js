@@ -1,11 +1,11 @@
 (function () {
-  const selectors = '.fade-in, .fade-in-left, .fade-in-right, .section-underline';
+  const selectors = '.about-fade-in, .about-fade-in-left, .about-fade-in-right, .about-section-underline';
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          entry.target.classList.add('about-visible');
           observer.unobserve(entry.target);
         }
       });
@@ -22,7 +22,7 @@
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            ctaBanner.classList.add('visible');
+            ctaBanner.classList.add('about-visible');
             ctaObserver.unobserve(ctaBanner);
           }
         });
