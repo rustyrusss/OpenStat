@@ -3,7 +3,7 @@
    PAGE CONFIGURATION — Edit everything here
    ============================================================ */
 
-$page_title       = 'Dashboard';
+$page_title       = 'Welcome to Dashboard';
 $page_description = 'Lorem Ipsum.';
 $hero_image       = 'Img/Background-Data.png';
 $active_nav       = 'dashboard';
@@ -11,8 +11,8 @@ $active_nav       = 'dashboard';
 $hero_icon       = 'Img/Pop-Sub/Pop-Banner.png';
 $hero_bg_graphic = 'Img/Pop-Sub/Background.png';
 
-$categories_section_title    = 'Categories';
-$categories_section_subtitle = 'Explore the vital events and population data available in each category.';
+$categories_section_title    = 'Browse By Categories';
+$categories_section_subtitle = '';
 
 $categories = [
   [
@@ -81,6 +81,13 @@ $categories = [
     'icon'        => 'Img/Pop-Sub/Marriage.png',
     'href'        => 'pop-marriage.php',
   ],
+  [
+    'label'       => 'Marriage',
+    'description' => 'Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.',
+    'icon'        => 'Img/Pop-Sub/Marriage.png',
+    'href'        => 'pop-marriage.php',
+  ],
+  
 ];
 
 $breadcrumbs = [
@@ -107,11 +114,6 @@ $nav_items = [
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PSA OpenSTAT – <?= htmlspecialchars($page_title) ?></title>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
-
-  <!-- Both views hidden until JS runs — prevents flash -->
-  <style>
-    #view-grid, #view-list { display: none; }
-  </style>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -154,7 +156,7 @@ $nav_items = [
     .nav-link:hover      { background: rgba(255,255,255,.12); }
     .nav-link.active-nav { background: rgba(255,255,255,.18); font-weight: 700; }
 
-    /* ─── HERO (copied from about.php) ─── */
+    /* ─── HERO ─── */
     .hero-banner {
       position: relative;
       min-height: 180px;
@@ -211,33 +213,77 @@ $nav_items = [
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-      margin-bottom: 6px;
+      margin-bottom: 16px;
       flex-wrap: wrap;
       gap: 12px;
     }
     .section-title { font-size: 20px; font-weight: 800; color: #1a3269; }
     .section-sub   { font-size: 13px; color: #6b7280; margin-bottom: 20px; }
 
-    /* ─── VIEW TOGGLE ─── */
-    .view-toggle {
-      display: flex; align-items: center; gap: 6px;
-      background: #fff;
+    /* ─── TOOLBAR: Search + Filter ─── */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .toolbar-search {
+      flex: 1;
+      min-width: 200px;
+      position: relative;
+    }
+    .toolbar-search svg {
+      position: absolute;
+      left: 13px; top: 50%;
+      transform: translateY(-50%);
+      color: #9ca3af;
+      pointer-events: none;
+    }
+    .toolbar-search input {
+      width: 100%;
+      padding: 10px 14px 10px 40px;
       border: 1.5px solid #c8d8ef;
       border-radius: 10px;
-      padding: 4px;
-      box-shadow: 0 2px 8px rgba(26,50,105,.08);
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13.5px;
+      color: #1f2937;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(26,50,105,.07);
+      outline: none;
+      transition: border-color .18s, box-shadow .18s;
     }
-    .toggle-btn {
-      display: flex; align-items: center; justify-content: center;
-      width: 36px; height: 36px;
-      border: none; border-radius: 7px;
-      background: transparent; cursor: pointer;
+    .toolbar-search input:focus {
+      border-color: #1a3269;
+      box-shadow: 0 0 0 3px rgba(26,50,105,.12);
+    }
+    .toolbar-search input::placeholder { color: #b0b8c9; }
+    .toolbar-filter select {
+      padding: 10px 36px 10px 14px;
+      border: 1.5px solid #c8d8ef;
+      border-radius: 10px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13.5px;
+      color: #1f2937;
+      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center;
+      appearance: none;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(26,50,105,.07);
+      outline: none;
+      transition: border-color .18s;
+      min-width: 160px;
+    }
+    .toolbar-filter select:focus { border-color: #1a3269; }
+
+    /* ─── NO RESULTS ─── */
+    .no-results {
+      display: none;
+      text-align: center;
+      padding: 48px 20px;
       color: #9ca3af;
-      transition: background .18s, color .18s;
+      font-size: 14px;
     }
-    .toggle-btn:hover  { background: #eff6ff; color: #1a3269; }
-    .toggle-btn.active { background: #1a3269; color: #fff; }
-    .toggle-btn svg    { display: block; }
+    .no-results svg { margin-bottom: 12px; opacity: .4; display: block; margin-left: auto; margin-right: auto; }
 
     /* ─── GRID VIEW (4 columns) ─── */
     .categories-grid {
@@ -289,49 +335,6 @@ $nav_items = [
     }
     .btn-view:hover { background: #142a56; }
 
-    /* ─── LIST VIEW ─── */
-    .categories-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .list-card {
-      background: #fff;
-      border: 1.5px solid #c8d8ef;
-      border-radius: 14px;
-      padding: 18px 22px;
-      display: flex; align-items: center; gap: 20px;
-      box-shadow: 0 4px 14px rgba(26,50,105,.08);
-      transition: box-shadow .2s, transform .2s, background .2s;
-      text-decoration: none;
-    }
-    .list-card:hover {
-      box-shadow: 0 6px 22px rgba(26,50,105,.16);
-      transform: translateX(4px);
-      background: #eff6ff;
-    }
-    .list-icon-wrap {
-      flex-shrink: 0;
-      width: 58px; height: 58px;
-      background: #dce8f7;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .list-icon-wrap img { width: 56px; height: 56px; object-fit: contain; }
-    .list-info { flex: 1; }
-    .list-info h3 { font-size: 15px; font-weight: 800; color: #1a3269; margin-bottom: 4px; }
-    .list-info p  { font-size: 12.5px; color: #6b7280; line-height: 1.65; }
-    .list-meta {
-      display: flex; align-items: center; gap: 14px; flex-shrink: 0;
-    }
-    .list-arrow {
-      width: 34px; height: 34px;
-      background: #1a3269; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; transition: background .18s;
-    }
-    .list-card:hover .list-arrow { background: #142a56; }
-
     /* ─── FOOTER ─── */
     footer {
       background: #1f2937; color: #9ca3af;
@@ -346,25 +349,20 @@ $nav_items = [
     @media (max-width: 1024px) {
       .categories-grid { grid-template-columns: repeat(3, 1fr); }
     }
+    @media (max-width: 768px) {
+      .toolbar { gap: 8px; }
+      .toolbar-filter select { min-width: 130px; }
+    }
     @media (max-width: 700px) {
       .categories-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 480px) {
       .categories-grid { grid-template-columns: 1fr; }
-      .list-info p { display: none; }
-      .list-meta { flex-direction: column; gap: 8px; align-items: flex-end; }
+      .toolbar-search { min-width: 100%; }
     }
   </style>
 
-  <!-- Flash-fix: reveal the saved view before first paint -->
-  <script>
-    (function() {
-      var saved = localStorage.getItem('pvs-view') || 'grid';
-      document.write('<style id="view-flash-fix">' +
-        '#view-' + saved + ' { display: ' + (saved === 'list' ? 'flex' : 'grid') + ' !important; }' +
-      '</style>');
-    })();
-  </script>
+
 </head>
 <body>
 
@@ -386,7 +384,7 @@ $nav_items = [
   </nav>
 </header>
 
-<!-- ════ HERO (copied from about.php) ════ -->
+<!-- ════ HERO ════ -->
 <div class="hero-banner">
   <img src="<?= htmlspecialchars($hero_image) ?>" alt="" class="hero-banner-bg"/>
   <div class="hero-overlay"></div>
@@ -411,18 +409,55 @@ $nav_items = [
 <!-- ════ MAIN CONTENT ════ -->
 <div class="main-wrap">
 
+  <!-- ══ TOOLBAR: Search + Filter ══ -->
+  <div class="toolbar">
+    <!-- Search -->
+    <div class="toolbar-search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+      </svg>
+      <input type="text" id="cat-search" placeholder="Search " autocomplete="off"/>
+    </div>
+    <!-- Category filter -->
+    <div class="toolbar-filter">
+      <select id="cat-filter">
+        <option value="">All Categories</option>
+        <?php
+          $unique_labels = array_unique(array_column($categories, 'label'));
+          foreach ($unique_labels as $lbl):
+        ?>
+          <option value="<?= htmlspecialchars($lbl) ?>"><?= htmlspecialchars($lbl) ?></option>
+        <?php endforeach; ?>
+      </select>
+    </div>
+  </div><!-- /.toolbar -->
+
   <!-- Section header -->
   <div class="section-header">
     <div>
       <h2 class="section-title"><?= htmlspecialchars($categories_section_title) ?></h2>
+      <?php if (!empty($categories_section_subtitle)): ?>
+        <p class="section-sub" style="margin-bottom:0;"><?= htmlspecialchars($categories_section_subtitle) ?></p>
+      <?php endif; ?>
     </div>
   </div>
-  <p class="section-sub"><?= htmlspecialchars($categories_section_subtitle) ?></p>
+
+  <!-- No results message -->
+  <div class="no-results" id="no-results">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9ca3af"
+         stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+    </svg>
+    <p>No categories match your search.</p>
+  </div>
 
   <!-- ══ GRID VIEW (4 columns) ══ -->
   <div id="view-grid" class="categories-grid">
     <?php foreach ($categories as $cat): ?>
-    <a href="<?= htmlspecialchars($cat['href']) ?>" class="grid-card">
+    <a href="<?= htmlspecialchars($cat['href']) ?>" class="grid-card"
+       data-label="<?= htmlspecialchars(strtolower($cat['label'])) ?>"
+       data-desc="<?= htmlspecialchars(strtolower($cat['description'])) ?>">
       <div class="card-header">
         <div class="card-icon-wrap">
           <img src="<?= htmlspecialchars($cat['icon']) ?>" alt="<?= htmlspecialchars($cat['label']) ?> icon"/>
@@ -431,29 +466,6 @@ $nav_items = [
       </div>
       <p class="card-desc"><?= htmlspecialchars($cat['description']) ?></p>
       <span class="btn-view">View Datasets &rsaquo;</span>
-    </a>
-    <?php endforeach; ?>
-  </div>
-
-  <!-- ══ LIST VIEW ══ -->
-  <div id="view-list" class="categories-list">
-    <?php foreach ($categories as $i => $cat): ?>
-    <a href="<?= htmlspecialchars($cat['href']) ?>" class="list-card"
-       style="animation-delay:<?= 0.04 + $i * 0.06 ?>s;">
-      <div class="list-icon-wrap">
-        <img src="<?= htmlspecialchars($cat['icon']) ?>" alt="<?= htmlspecialchars($cat['label']) ?> icon"/>
-      </div>
-      <div class="list-info">
-        <h3><?= htmlspecialchars($cat['label']) ?></h3>
-        <p><?= htmlspecialchars($cat['description']) ?></p>
-      </div>
-      <div class="list-meta">
-        <div class="list-arrow">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
-          </svg>
-        </div>
-      </div>
     </a>
     <?php endforeach; ?>
   </div>
@@ -471,32 +483,32 @@ $nav_items = [
 </footer>
 
 <script>
-/* ══ VIEW TOGGLE ══ */
-function setView(v) {
-  var views    = ['grid', 'list'];
-  var displays = { grid: 'grid', list: 'flex' };
+/* ══ SEARCH + FILTER ══ */
+function filterCards() {
+  var query  = (document.getElementById('cat-search').value  || '').toLowerCase().trim();
+  var filter = (document.getElementById('cat-filter').value  || '').toLowerCase().trim();
 
-  views.forEach(function(id) {
-    var el  = document.getElementById('view-' + id);
-    var btn = document.getElementById('btn-'  + id);
-    if (id === v) {
-      el.style.display = displays[id];
-      btn.classList.add('active');
-    } else {
-      el.style.display = 'none';
-      btn.classList.remove('active');
-    }
+  var cards   = document.querySelectorAll('#view-grid .grid-card');
+  var visible = 0;
+
+  cards.forEach(function(card) {
+    var label = card.getAttribute('data-label') || '';
+    var desc  = card.getAttribute('data-desc')  || '';
+
+    var matchSearch = !query  || label.includes(query) || desc.includes(query);
+    var matchFilter = !filter || label === filter;
+    var show        = matchSearch && matchFilter;
+
+    card.style.display = show ? '' : 'none';
+    if (show) visible++;
   });
 
-  localStorage.setItem('pvs-view', v);
-
-  var fix = document.getElementById('view-flash-fix');
-  if (fix) fix.parentNode.removeChild(fix);
+  document.getElementById('no-results').style.display = (visible === 0) ? 'block' : 'none';
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  var saved = localStorage.getItem('pvs-view') || 'grid';
-  setView(saved);
+  document.getElementById('cat-search').addEventListener('input',  filterCards);
+  document.getElementById('cat-filter').addEventListener('change', filterCards);
 });
 </script>
 </body>

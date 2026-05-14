@@ -116,7 +116,7 @@ body {
 
 /* ─── SECTION UNDERLINE — YELLOW ─── */
 .section-underline {
-  width: 48px;
+  width: 200px;
   height: 4px;
   background: #f5a623;
   border-radius: 2px;
@@ -143,6 +143,8 @@ body {
 }
 .two-col-left { flex: 1; min-width: 280px; }
 
+
+
 .side-image {
   flex-shrink: 0;
   width: 320px;
@@ -160,6 +162,7 @@ body {
 }
 
 /* ─── INTRO BLOCKS ─── */
+
 .intro-block {
   display: flex;
   align-items: flex-start;
@@ -211,10 +214,12 @@ body {
 
 .obj-item {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 8px 20px 8px 8px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 8px 16px;
+  width: 100%;              /* ← add this */
   border-right: 1.5px solid #e8eef7;
   transition: background .2s, transform .2s;
   border-radius: 8px;
@@ -226,14 +231,15 @@ body {
   width: 52px;
   height: 52px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;      /* ← was "flex-start" */
   justify-content: center;
-  padding-top: 2px;
 }
 .obj-icon img {
   width: 48px;
   height: 48px;
   object-fit: contain;
+  display: block;           /* ← add this */
+  margin: 0 auto;           /* ← add this */
 }
 .obj-item p {
   font-size: 13.5px;
@@ -276,6 +282,23 @@ body {
   color: #1a1a1a;
   line-height: 1.75;
   max-width: 480px;
+}
+.cta-bg {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.7s 0.1s cubic-bezier(.22,1,.36,1),
+              transform 0.7s 0.1s cubic-bezier(.22,1,.36,1);
+}
+.cta-text {
+  opacity: 0;
+  transform: translateX(28px);
+  transition: opacity 0.7s 0.3s cubic-bezier(.22,1,.36,1),
+              transform 0.7s 0.3s cubic-bezier(.22,1,.36,1);
+}
+.cta-banner.visible .cta-bg,
+.cta-banner.visible .cta-text {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* ════════════════════════════════════════
