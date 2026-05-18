@@ -50,6 +50,7 @@ $featured_items = [
     'description' => 'The Philippine Food Security Information System (PHFSIS) is an information system containing relevant, organized, timely and accessible data related to food security.',
     'url'         => '#',
   ],
+ 
 ];
 /* ============================================================
    END CONFIGURATION

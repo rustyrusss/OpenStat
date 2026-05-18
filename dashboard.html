@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PSA OpenSTAT – Welcome to Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="dashboard.css"/>
+</head>
+<body>
+
+<!-- ════ NAVBAR ════ -->
+<header class="db-navbar">
+  <div class="db-navbar-top">
+    <img src="Img/Logos/PSAHeader.png" alt="Philippine Statistics Authority" class="db-logo-psa"/>
+    <div class="db-logo-openstat-wrap">
+      <img src="Img/Logos/OpenStat-White.png" alt="OpenSTAT" class="db-logo-openstat"/>
+    </div>
+  </div>
+  <nav class="db-navbar-nav">
+    <a href="index.php"    class="db-nav-link">Home</a>
+    <a href="about.php"    class="db-nav-link">About</a>
+    <a href="database.php" class="db-nav-link">Database</a>
+    <a href="dashboard.php"class="db-nav-link db-active-nav">Dashboard</a>
+    <a href="featured.php" class="db-nav-link">Featured</a>
+    <a href="contact.php"  class="db-nav-link">Contact Us</a>
+  </nav>
+</header>
+
+<!-- ════ HERO ════ -->
+<div class="db-hero">
+  <img src="Img/Background-Data.png" alt="" class="db-hero-bg"/>
+  <div class="db-hero-overlay"></div>
+  <div class="db-hero-content">
+    <div class="db-breadcrumb">
+      <a href="database.php" class="db-breadcrumb-link">Dashboard</a>
+    </div>
+    <h1 class="db-hero-title">Welcome to Dashboard</h1>
+  </div>
+</div>
+
+<!-- ════ MAIN CONTENT ════ -->
+<div class="db-main">
+
+  <!-- Toolbar: Search + Filter -->
+  <div class="db-toolbar">
+    <div class="db-search-wrap">
+      <svg class="db-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+      </svg>
+      <input type="text" id="db-search" class="db-search-input" placeholder="Search" autocomplete="off"/>
+    </div>
+    <div class="db-filter-wrap">
+      <select id="db-filter" class="db-filter-select">
+        <option value="">All Categories</option>
+        <option value="population">Population</option>
+        <option value="birth">Birth</option>
+        <option value="death">Death</option>
+        <option value="marriage">Marriage</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Section header -->
+  <div class="db-section-header">
+    <h2 class="db-section-title">Browse By Categories</h2>
+  </div>
+
+  <!-- No results -->
+  <div class="db-no-results" id="db-no-results">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9ca3af"
+         stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+    </svg>
+    <p>No categories match your search.</p>
+  </div>
+
+  <!-- Grid -->
+  <div id="db-grid" class="db-grid">
+
+    <a href="pop-population.php" class="db-card"
+       data-label="population"
+       data-desc="data on the total population size population growth density and distribution by age sex and geographic area">
+      <div class="db-card-header">
+        <div class="db-card-icon">
+          <img src="Img/Pop-Sub/Population.png" alt="Population icon"/>
+        </div>
+        <h3>Population</h3>
+      </div>
+      <p class="db-card-desc">Data on the total population size, population growth, density, and distribution by age, sex, and geographic area.</p>
+      <span class="db-btn-view">View Datasets &rsaquo;</span>
+    </a>
+
+    <a href="pop-birth.php" class="db-card"
+       data-label="birth"
+       data-desc="statistics on live birth including number of births birth rates age of mother and other birth-related characteristics">
+      <div class="db-card-header">
+        <div class="db-card-icon">
+          <img src="Img/Pop-Sub/Birth.png" alt="Birth icon"/>
+        </div>
+        <h3>Birth</h3>
+      </div>
+      <p class="db-card-desc">Statistics on live birth including number of births, birth rates, age of mother and other birth-related characteristics.</p>
+      <span class="db-btn-view">View Datasets &rsaquo;</span>
+    </a>
+
+    <a href="pop-death.php" class="db-card"
+       data-label="death"
+       data-desc="data on deaths including number of deaths death rates causes of death age sex and other demographic details">
+      <div class="db-card-header">
+        <div class="db-card-icon">
+          <img src="Img/Pop-Sub/Death.png" alt="Death icon"/>
+        </div>
+        <h3>Death</h3>
+      </div>
+      <p class="db-card-desc">Data on deaths including number of deaths, death rates, causes of death, age, sex, and other demographic details.</p>
+      <span class="db-btn-view">View Datasets &rsaquo;</span>
+    </a>
+
+    <a href="pop-marriage.php" class="db-card"
+       data-label="marriage"
+       data-desc="statistics on marriages including number of marriages marriage rates age of couple and type of ceremony">
+      <div class="db-card-header">
+        <div class="db-card-icon">
+          <img src="Img/Pop-Sub/Marriage.png" alt="Marriage icon"/>
+        </div>
+        <h3>Marriage</h3>
+      </div>
+      <p class="db-card-desc">Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+      <span class="db-btn-view">View Datasets &rsaquo;</span>
+    </a>
+
+    <a href="pop-marriage.php" class="db-card"
+       data-label="marriage"
+       data-desc="statistics on marriages including number of marriages marriage rates age of couple and type of ceremony">
+      <div class="db-card-header">
+        <div class="db-card-icon">
+          <img src="Img/Pop-Sub/Marriage.png" alt="Marriage icon"/>
+        </div>
+        <h3>Marriage</h3>
+      </div>
+      <p class="db-card-desc">Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+      <span class="db-btn-view">View Datasets &rsaquo;</span>
+    </a>
+
+    <a href="pop-marriage.php" class="db-card"
+       data-label="marriage"
+       data-desc="statistics on marriages including number of marriages marriage rates age of couple and type of ceremony">
+      <div class="db-card-header">
+        <div class="db-card-icon">
+          <img src="Img/Pop-Sub/Marriage.png" alt="Marriage icon"/>
+        </div>
+        <h3>Marriage</h3>
+      </div>
+      <p class="db-card-desc">Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+      <span class="db-btn-view">View Datasets &rsaquo;</span>
+    </a>
+
+    <a href="pop-marriage.php" class="db-card"
+       data-label="marriage"
+       data-desc="statistics on marriages including number of marriages marriage rates age of couple and type of ceremony">
+      <div class="db-card-header">
+        <div class="db-card-icon">
+          <img src="Img/Pop-Sub/Marriage.png" alt="Marriage icon"/>
+        </div>
+        <h3>Marriage</h3>
+      </div>
+      <p class="db-card-desc">Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+      <span class="db-btn-view">View Datasets &rsaquo;</span>
+    </a>
+
+    <a href="pop-marriage.php" class="db-card"
+       data-label="marriage"
+       data-desc="statistics on marriages including number of marriages marriage rates age of couple and type of ceremony">
+      <div class="db-card-header">
+        <div class="db-card-icon">
+          <img src="Img/Pop-Sub/Marriage.png" alt="Marriage icon"/>
+        </div>
+        <h3>Marriage</h3>
+      </div>
+      <p class="db-card-desc">Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+      <span class="db-btn-view">View Datasets &rsaquo;</span>
+    </a>
+
+    <a href="pop-marriage.php" class="db-card"
+       data-label="marriage"
+       data-desc="statistics on marriages including number of marriages marriage rates age of couple and type of ceremony">
+      <div class="db-card-header">
+        <div class="db-card-icon">
+          <img src="Img/Pop-Sub/Marriage.png" alt="Marriage icon"/>
+        </div>
+        <h3>Marriage</h3>
+      </div>
+      <p class="db-card-desc">Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+      <span class="db-btn-view">View Datasets &rsaquo;</span>
+    </a>
+
+    <a href="pop-marriage.php" class="db-card"
+       data-label="marriage"
+       data-desc="statistics on marriages including number of marriages marriage rates age of couple and type of ceremony">
+      <div class="db-card-header">
+        <div class="db-card-icon">
+          <img src="Img/Pop-Sub/Marriage.png" alt="Marriage icon"/>
+        </div>
+        <h3>Marriage</h3>
+      </div>
+      <p class="db-card-desc">Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+      <span class="db-btn-view">View Datasets &rsaquo;</span>
+    </a>
+
+    <a href="pop-marriage.php" class="db-card"
+       data-label="marriage"
+       data-desc="statistics on marriages including number of marriages marriage rates age of couple and type of ceremony">
+      <div class="db-card-header">
+        <div class="db-card-icon">
+          <img src="Img/Pop-Sub/Marriage.png" alt="Marriage icon"/>
+        </div>
+        <h3>Marriage</h3>
+      </div>
+      <p class="db-card-desc">Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+      <span class="db-btn-view">View Datasets &rsaquo;</span>
+    </a>
+
+    <a href="pop-marriage.php" class="db-card"
+       data-label="marriage"
+       data-desc="statistics on marriages including number of marriages marriage rates age of couple and type of ceremony">
+      <div class="db-card-header">
+        <div class="db-card-icon">
+          <img src="Img/Pop-Sub/Marriage.png" alt="Marriage icon"/>
+        </div>
+        <h3>Marriage</h3>
+      </div>
+      <p class="db-card-desc">Statistics on marriages including number of marriages, marriage rates, age of couple, and type of ceremony.</p>
+      <span class="db-btn-view">View Datasets &rsaquo;</span>
+    </a>
+
+  </div><!-- /#db-grid -->
+
+</div><!-- /.db-main -->
+
+<!-- ════ FOOTER ════ -->
+<footer class="db-footer">
+  <span>2026 Philippine Statistics Authority. All content is public domain unless otherwise stated.</span>
+  <div class="db-footer-links">
+    <a href="#" class="db-footer-link">Terms Of Use</a>
+    <span class="db-footer-divider">|</span>
+    <a href="#" class="db-footer-link">Privacy Statement</a>
+  </div>
+</footer>
+
+<script src="dashboard.js"></script>
+</body>
+</html>
