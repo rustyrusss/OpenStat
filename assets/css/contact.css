@@ -1,0 +1,489 @@
+/* ============================================================
+   CONTACT PAGE — contact.css
+   All classes and keyframes prefixed with "ct-" to avoid
+   conflicts with other page stylesheets.
+   ============================================================ */
+
+/* ── Variables ── */
+:root {
+  --ct-primary:      #1a3269;
+  --ct-primary-dark: #142a56;
+  --ct-primary-light:#eff6ff;
+  --ct-text:         #374151;
+  --ct-text-dark:    #111827;
+  --ct-text-muted:   #6b7280;
+  --ct-muted:        #9ca3af;
+  --ct-border:       #e2e8f0;
+  --ct-bg:           #f0f0f0;
+  --ct-white:        #ffffff;
+  --ct-accent:       #f5a623;
+  --ct-shadow-sm:    0 1px 4px rgba(26,50,105,0.08);
+  --ct-shadow-hover: 0 4px 16px rgba(26,50,105,0.13);
+}
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html  { scroll-behavior: smooth; }
+body  {
+  font-family: 'Open Sans', sans-serif;
+  background: var(--ct-bg);
+  color: var(--ct-text);
+  overflow-x: hidden;
+}
+img { display: block; }
+a   { text-decoration: none; }
+
+/* ── Text links ── */
+.ct-text-link {
+  color: var(--ct-primary);
+  text-decoration: underline;
+}
+.ct-text-link:hover { color: var(--ct-primary-dark); }
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.ct-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  animation: ct-slideDown 0.5s cubic-bezier(.22,1,.36,1) both;
+}
+
+@keyframes ct-slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+.ct-navbar-top {
+  background: var(--ct-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 48px;
+  min-height: 88px;
+}
+
+.ct-logo-psa {
+  height: 88px;
+  width: auto;
+  object-fit: contain;
+}
+
+.ct-logo-openstat-wrap { margin-right: 60px; }
+
+.ct-logo-openstat {
+  height: 90px;
+  width: auto;
+  object-fit: contain;
+}
+
+.ct-navbar-nav {
+  background: var(--ct-primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ct-nav-link {
+  display: inline-block;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 13px 30px;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+  transition: background 0.15s;
+}
+.ct-nav-link:hover  { background: rgba(255,255,255,0.12); }
+.ct-active-nav      { background: rgba(255,255,255,0.18) !important; font-weight: 700; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.ct-hero {
+  position: relative;
+  min-height: 180px;
+}
+
+.ct-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.ct-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(4,17,61,0.72);
+  z-index: 1;
+}
+
+.ct-hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 32px;
+}
+
+.ct-breadcrumb {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 12px;
+}
+
+.ct-breadcrumb-link {
+  color: rgba(255,255,255,0.75);
+  transition: color 0.15s;
+}
+.ct-breadcrumb-link:hover { color: #fff; }
+
+.ct-hero-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.5);
+  margin-bottom: 8px;
+  animation: ct-heroFadeIn 0.7s 0.15s cubic-bezier(.22,1,.36,1) both;
+}
+
+.ct-hero-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.82);
+  max-width: 600px;
+  line-height: 1.65;
+  animation: ct-heroFadeIn 0.7s 0.2s cubic-bezier(.22,1,.36,1) both;
+}
+
+@keyframes ct-heroFadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+.ct-main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 36px 32px 60px;
+}
+
+/* Two-column layout */
+.ct-layout {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+}
+
+.ct-left  { flex: 1; min-width: 0; }
+.ct-right { width: 290px; flex-shrink: 0; }
+
+/* Section headings */
+.ct-section-heading {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ct-text-dark);
+  margin: 0 0 16px 0;
+}
+.ct-section-heading--spaced { margin-top: 28px; }
+
+/* ============================================================
+   CONTACT CARDS (Ways to contact)
+   ============================================================ */
+.ct-contact-card {
+  background: var(--ct-white);
+  border: 1px solid var(--ct-border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 22px;
+  box-shadow: var(--ct-shadow-sm);
+  margin-bottom: 12px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.ct-contact-card:hover {
+  box-shadow: var(--ct-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.ct-card-content h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ct-primary);
+  margin: 0 0 6px 0;
+}
+.ct-card-content p {
+  font-size: 14px;
+  color: var(--ct-text);
+  line-height: 1.72;
+  margin: 0;
+}
+
+/* ============================================================
+   ICON WRAPPERS
+   ============================================================ */
+.ct-icon-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Large square icon (contact cards) */
+.ct-icon-lg {
+  width: 56px;
+  height: 56px;
+  background: var(--ct-primary-light);
+  border-radius: 12px;
+}
+.ct-icon-lg img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+/* Medium square icon (request cards) */
+.ct-icon-md {
+  width: 48px;
+  height: 48px;
+  background: var(--ct-primary-light);
+  border-radius: 10px;
+}
+.ct-icon-md img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* Round icon (official card, notice card) */
+.ct-icon-round {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+}
+.ct-icon-round img {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+}
+
+/* Round with bg (notice card) */
+.ct-icon-bg {
+  background: var(--ct-primary-light);
+  width: 52px;
+  height: 52px;
+}
+.ct-icon-bg img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+
+/* ============================================================
+   REQUEST GRID
+   ============================================================ */
+.ct-request-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 0;
+}
+
+.ct-request-card {
+  background: var(--ct-white);
+  border: 1px solid var(--ct-border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  box-shadow: 0 1px 4px rgba(26,50,105,0.07);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.ct-request-card:hover {
+  box-shadow: 0 4px 14px rgba(26,50,105,0.12);
+  transform: translateY(-2px);
+}
+.ct-request-card p {
+  font-size: 14px;
+  color: var(--ct-text);
+  line-height: 1.70;
+  margin: 0;
+  padding-top: 2px;
+}
+
+/* ============================================================
+   OFFICIAL CARD
+   ============================================================ */
+.ct-official-card {
+  background: var(--ct-primary-light);
+  border: 1px solid #c7d9f5;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  margin-top: 14px;
+  box-shadow: 0 1px 4px rgba(26,50,105,0.07);
+}
+
+.ct-official-info h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ct-primary);
+  margin: 0 0 2px 0;
+}
+.ct-official-info p {
+  font-size: 14px;
+  color: var(--ct-text);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   NOTICE CARD
+   ============================================================ */
+.ct-notice-card {
+  background: var(--ct-white);
+  border: 1px solid var(--ct-border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  margin-top: 14px;
+  box-shadow: 0 1px 4px rgba(26,50,105,0.07);
+}
+.ct-notice-card p {
+  font-size: 13.5px;
+  color: var(--ct-text);
+  line-height: 1.72;
+  margin: 0;
+}
+
+/* ============================================================
+   RIGHT COLUMN — Contact Info Box
+   ============================================================ */
+.ct-info-box {
+  background: var(--ct-white);
+  border: 1px solid var(--ct-border);
+  border-radius: 10px;
+  padding: 22px 22px 18px;
+  box-shadow: 0 1px 4px rgba(26,50,105,0.07);
+  font-size: 13px;
+  color: var(--ct-text);
+  line-height: 1.72;
+}
+
+.ct-info-box h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ct-text-dark);
+  margin: 0;
+}
+
+.ct-info-underline {
+  width: 65px;
+  height: 4px;
+  background: var(--ct-accent);
+  border-radius: 2px;
+  margin-top: 8px;
+  margin-bottom: 14px;
+}
+
+.ct-info-label {
+  font-size: 14px;
+  color: var(--ct-text-muted);
+  margin: 14px 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.ct-info-box strong {
+  color: var(--ct-primary);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.ct-info-box a {
+  color: var(--ct-primary);
+  text-decoration: underline;
+}
+.ct-info-box a:hover { color: var(--ct-primary-dark); }
+
+.ct-info-divider {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 14px 0;
+}
+
+.ct-info-email  { margin-top: 6px; }
+.ct-info-role   { font-size: 12px; color: var(--ct-text-muted); margin-bottom: 6px; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.ct-footer {
+  background: #1f2937;
+  color: var(--ct-muted);
+  font-size: 12px;
+  padding: 14px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.ct-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ct-footer-link {
+  color: var(--ct-muted);
+  transition: color 0.15s;
+}
+.ct-footer-link:hover { color: var(--ct-white); }
+.ct-footer-divider    { color: #4b5563; }
+
+/* ============================================================
+   SCROLL-TRIGGERED FADE-IN ANIMATIONS
+   Prefixed "ct-" to avoid conflicts
+   ============================================================ */
+.ct-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s cubic-bezier(.22,1,.36,1),
+              transform 0.5s cubic-bezier(.22,1,.36,1);
+}
+.ct-fade.ct-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays */
+.ct-s1 { transition-delay: 0s;    }
+.ct-s2 { transition-delay: 0.08s; }
+.ct-s3 { transition-delay: 0.16s; }
+.ct-s4 { transition-delay: 0.24s; }
+.ct-s5 { transition-delay: 0.32s; }
+.ct-s6 { transition-delay: 0.40s; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .ct-layout       { flex-direction: column; }
+  .ct-right        { width: 100%; }
+  .ct-request-grid { grid-template-columns: 1fr; }
+}
