@@ -3,18 +3,15 @@
    PAGE CONFIGURATION — Edit everything here
    ============================================================ */
 
-/* ── Page meta ── */
 $page_title       = 'Contact Us / Request Data';
 $page_description = 'The following are the official channels through which you may contact the Philippine Statistics Authority or submit requests for statistical data, information, and related services.';
 $hero_image       = 'Img/Background-Data.png';
 $active_nav       = 'contact';
 
-/* ── Breadcrumb trail ── */
 $breadcrumbs = [
   ['label' => 'Dashboard >', 'href' => 'dashboard.php'],
 ];
 
-/* ── Navigation items ── */
 $nav_items = [
   ['label' => 'Home',       'href' => 'index.php',    'key' => 'home'],
   ['label' => 'About',      'href' => 'about.php',    'key' => 'about'],
@@ -24,7 +21,6 @@ $nav_items = [
   ['label' => 'Contact Us', 'href' => 'contact.php',  'key' => 'contact'],
 ];
 
-/* ── Ways to contact / access data ── */
 $ways_contact = [
   [
     'icon'        => 'Img/Contact/Download.png',
@@ -43,7 +39,6 @@ $ways_contact = [
   ],
 ];
 
-/* ── Ways to request data ── */
 $ways_request = [
   [
     'icon'  => 'Img/Contact/Fill Data Request Form.png',
@@ -125,7 +120,6 @@ $ways_request = [
       font-weight: 700;
       color: #111827;
       margin: 0 0 16px 0;
-      padding-bottom: 0;
     }
 
     /* ── Contact method card (Ways to contact) ── */
@@ -147,167 +141,70 @@ $ways_request = [
     }
     .contact-card .icon-wrap {
       flex-shrink: 0;
-      width: 56px;
-      height: 56px;
-      background: rgb(239, 246, 255);
+      width: 56px; height: 56px;
+      background: rgb(239,246,255);
       border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
     }
-    .contact-card .icon-wrap img {
-      width: 56px;
-      height: 56px;
-      object-fit: contain;
-    }
+    .contact-card .icon-wrap img { width: 56px; height: 56px; object-fit: contain; }
     .contact-card .card-content h3 {
-      font-size: 16px;
-      font-weight: 700;
-      color: #1a3269;
-      margin: 0 0 6px 0;
+      font-size: 16px; font-weight: 700; color: #1a3269; margin: 0 0 6px 0;
     }
     .contact-card .card-content p {
-      font-size: 14px;
-      color: #374151;
-      line-height: 1.72;
-      margin: 0;
+      font-size: 14px; color: #374151; line-height: 1.72; margin: 0;
     }
 
-    /* ── Request method grid cards ── */
-    .request-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    .request-card {
+    /* ── Single combined request card ── */
+    .request-single-card {
       background: #fff;
       border: 1px solid #e2e8f0;
       border-radius: 10px;
+      padding: 8px 0;
+      box-shadow: 0 1px 4px rgba(26,50,105,0.07);
+    }
+    .request-row {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 16px 18px;
-      box-shadow: 0 1px 4px rgba(26,50,105,0.07);
-      transition: box-shadow 0.2s, transform 0.2s;
+      gap: 18px;
+      padding: 16px 22px;
     }
-    .request-card:hover {
-      box-shadow: 0 4px 14px rgba(26,50,105,0.12);
-      transform: translateY(-2px);
+    .request-row:not(:last-child) {
+      border-bottom: 1px solid #f1f5f9;
     }
-    .request-card .icon-wrap {
+    .request-row .icon-wrap {
       flex-shrink: 0;
-      width: 48px;
-      height: 48px;
+      width: 48px; height: 48px;
       background: #eff6ff;
       border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
     }
-    .request-card .icon-wrap img {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-    }
-    .request-card p {
-      font-size: 14px;
-      color: #374151;
-      line-height: 1.70;
-      margin: 0;
-      padding-top: 2px;
+    .request-row .icon-wrap img { width: 48px; height: 48px; object-fit: contain; }
+    .request-row p {
+      font-size: 14px; color: #374151; line-height: 1.70; margin: 0;
     }
 
-    /* ── Contact info sidebar ── */
-    .contact-info-box {
+    /* ── Admin / official sub-card (nested, no hover) ── */
+    .official-sub-card {
       background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 22px 22px 18px;
-      box-shadow: 0 1px 4px rgba(26,50,105,0.07);
-      font-size: 13px;
-      color: #374151;
-      line-height: 1.72;
-    }
-
-    /* ── Contact info heading — no border on h2 itself ── */
-    .contact-info-box h2 {
-      font-size: 16px;
-      font-weight: 700;
-      color: #111827;
-      margin: 0 0 0 0;
-      padding-bottom: 0;
-      border-bottom: none;
-      display: block;
-    }
-
-    .contact-info-underline {
-      width: 65px;          /* ← change this to control underline length */
-      height: 4px;           /* ← change this to control thickness */
-      background: #f5a623;   /* ← change this to control color */
-      border-radius: 2px;    /* ← change this to control roundness */
-      margin-top: 8px;
-      margin-bottom: 14px;
-    }
-
-    .contact-info-box .info-label {
-      font-size: 14px;
-      color: #6b7280;
-      margin: 14px 0 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-    }
-    .contact-info-box strong {
-      color: #1a3269;
-      font-weight: 700;
-      display: block;
-      margin-bottom: 4px;
-    }
-    .contact-info-box a { color: #1a3269; text-decoration: underline; }
-    .contact-info-box a:hover { color: #142a56; }
-    .contact-info-divider {
-      border: none;
-      border-top: 1px solid #e5e7eb;
-      margin: 14px 0;
-    }
-
-    /* ── Admin / official card ── */
-    .official-card {
-      background: #eff6ff;
-      border: 1px solid #c7d9f5;
-      border-radius: 10px;
       display: flex;
       align-items: center;
       gap: 16px;
-      padding: 18px 20px;
-      margin-top: 14px;
-      box-shadow: 0 1px 4px rgba(26,50,105,0.07);
+      padding: 14px 22px 18px 86px;
+      width: 100%;
+      box-sizing: border-box;
     }
-    .official-card .icon-wrap {
-      flex-shrink: 0;
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .official-sub-card .icon-wrap {
+      flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
     }
-    .official-card .icon-wrap img {
-      width: 54px;
-      height: 54px;
-      object-fit: contain;
+    .official-sub-card .icon-wrap img { width: 48px; height: 48px; object-fit: contain; }
+    .official-sub-card .info h3 {
+      font-size: 15px; font-weight: 700; color: #1a3269; margin: 0 0 2px 0;
     }
-    .official-card .info h3 {
-      font-size: 16px;
-      font-weight: 700;
-      color: #1a3269;
-      margin: 0 0 2px 0;
+    .official-sub-card .info p {
+      font-size: 13px; color: #374151; margin: 0; line-height: 1.6;
     }
-    .official-card .info p {
-      font-size: 14px;
-      color: #374151;
-      margin: 0;
-      line-height: 1.6;
-    }
+    .request-row:hover { background: #f8faff; }
 
     /* ── Response time notice ── */
     .notice-card {
@@ -322,40 +219,73 @@ $ways_request = [
       box-shadow: 0 1px 4px rgba(26,50,105,0.07);
     }
     .notice-card .icon-wrap {
-      flex-shrink: 0;
-      width: 52px;
-      height: 52px;
-      background: #eff6ff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      flex-shrink: 0; width: 52px; height: 52px;
+      background: #eff6ff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
     }
-    .notice-card .icon-wrap img {
-      width: 52px;
-      height: 52px;
-      object-fit: contain;
-    }
-    .notice-card p {
-      font-size: 13.5px;
-      color: #374151;
-      line-height: 1.72;
-      margin: 0;
-    }
+    .notice-card .icon-wrap img { width: 52px; height: 52px; object-fit: contain; }
+    .notice-card p { font-size: 13.5px; color: #374151; line-height: 1.72; margin: 0; }
 
-    /* ── Layout ── */
-    .main-layout {
-      display: flex;
-      gap: 28px;
-      align-items: flex-start;
+    /* ── Contact info bottom bar ── */
+    .contact-info-bar {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 24px 28px 28px;
+      box-shadow: 0 1px 4px rgba(26,50,105,0.07);
+      margin-top: 28px;
     }
-    .left-col { flex: 1; min-width: 0; }
-    .right-col { width: 290px; flex-shrink: 0; }
+    .contact-info-bar h2 {
+      font-size: 18px; font-weight: 700; color: #111827; margin: 0;
+    }
+    .contact-info-underline {
+      width: 48px; height: 3px; background: #f5a623;
+      border-radius: 2px; margin-top: 8px; margin-bottom: 24px;
+    }
+    .contact-info-cols {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 0 2.5rem;
+      align-items: start;
+    }
+    .contact-info-divider {
+      background: #e2e8f0;
+      width: 1px;
+      align-self: stretch;
+    }
+    .contact-info-col {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .contact-info-col .col-label {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.6px; color: #9ca3af; margin: 0 0 10px 0;
+    }
+    .contact-info-col .col-name {
+      font-size: 14px; font-weight: 700; color: #1a3269; margin: 0 0 2px 0;
+    }
+    .contact-info-col .col-role {
+      font-size: 12px; color: #6b7280; margin: 0 0 12px 0;
+    }
+    .contact-info-col .info-row {
+      display: flex; align-items: flex-start; gap: 9px; margin-bottom: 7px;
+    }
+    .contact-info-col .info-row .info-icon {
+      flex-shrink: 0; margin-top: 2px;
+      width: 15px; height: 15px; opacity: 0.6;
+    }
+    .contact-info-col .info-row p {
+      font-size: 13px; color: #374151; line-height: 1.65; margin: 0;
+    }
+    .contact-info-col .info-row a {
+      font-size: 13px; color: #1a3269; text-decoration: underline;
+    }
+    .contact-info-col .info-row a:hover { color: #142a56; }
 
     /* ── Scroll animations ── */
     .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
+      opacity: 0; transform: translateY(20px);
       transition: opacity 0.5s cubic-bezier(.22,1,.36,1),
                   transform 0.5s cubic-bezier(.22,1,.36,1);
     }
@@ -366,11 +296,21 @@ $ways_request = [
     .stagger-4 { transition-delay: 0.24s; }
     .stagger-5 { transition-delay: 0.32s; }
     .stagger-6 { transition-delay: 0.40s; }
+    .stagger-7 { transition-delay: 0.48s; }
 
-    @media (max-width: 900px) {
-      .main-layout { flex-direction: column; }
-      .right-col { width: 100%; }
-      .request-grid { grid-template-columns: 1fr; }
+    @media (max-width: 700px) {
+      .contact-info-cols {
+        grid-template-columns: 1fr;
+      }
+      .contact-info-divider {
+        display: none;
+      }
+      .contact-info-col + .contact-info-col {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #e2e8f0;
+      }
+
     }
   </style>
 </head>
@@ -421,7 +361,8 @@ $ways_request = [
         style="text-shadow:0 2px 14px rgba(0,0,0,0.5);">
       <?= htmlspecialchars($page_title) ?>
     </h1>
-    <p class="hero-title text-[14px] text-white" style="opacity:0.82;max-width:600px;line-height:1.65;transition-delay:0.05s;">
+    <p class="hero-title text-[14px] text-white"
+       style="opacity:0.82;max-width:600px;line-height:1.65;transition-delay:0.05s;">
       <?= htmlspecialchars($page_description) ?>
     </p>
   </div>
@@ -429,108 +370,143 @@ $ways_request = [
 
 <!-- ════ MAIN CONTENT ════ -->
 <div style="max-width:1180px;margin:0 auto;padding:36px 32px 60px;">
-  <div class="main-layout">
 
-    <!-- ── LEFT COLUMN ── -->
-    <div class="left-col">
+  <!-- Ways to contact -->
+  <p class="section-heading">Ways on how to Contact Us</p>
 
-      <!-- Ways to contact -->
-      <p class="section-heading">Ways on how to Contact Us</p>
+  <?php foreach ($ways_contact as $i => $item): ?>
+  <div class="contact-card fade-in stagger-<?= $i + 1 ?>">
+    <div class="icon-wrap">
+      <img src="<?= htmlspecialchars($item['icon']) ?>" alt=""/>
+    </div>
+    <div class="card-content">
+      <h3><?= htmlspecialchars($item['title']) ?></h3>
+      <p><?= $item['description'] ?></p>
+    </div>
+  </div>
+  <?php endforeach; ?>
 
-      <?php foreach ($ways_contact as $i => $item): ?>
-      <div class="contact-card fade-in stagger-<?= $i + 1 ?>">
-        <div class="icon-wrap">
-          <img src="<?= htmlspecialchars($item['icon']) ?>" alt=""/>
-        </div>
-        <div class="card-content">
-          <h3><?= htmlspecialchars($item['title']) ?></h3>
-          <p><?= $item['description'] ?></p>
-        </div>
+  <!-- Ways to request data -->
+  <p class="section-heading fade-in stagger-4" style="margin-top:28px;">Ways on how to request data from PSA:</p>
+
+  <div class="request-single-card fade-in stagger-4">
+    <?php foreach ($ways_request as $idx => $item): ?>
+
+    <?php if ($idx < count($ways_request) - 1): ?>
+    <!-- Regular rows -->
+    <div class="request-row">
+      <div class="icon-wrap">
+        <img src="<?= htmlspecialchars($item['icon']) ?>" alt=""/>
       </div>
-      <?php endforeach; ?>
+      <p><?= $item['text'] ?></p>
+    </div>
 
-      <!-- Ways to request data -->
-      <p class="section-heading" style="margin-top:28px;">Ways on how to request data from PSA:</p>
-
-      <div class="request-grid fade-in stagger-4">
-        <?php foreach ($ways_request as $item): ?>
-        <div class="request-card">
-          <div class="icon-wrap">
-            <img src="<?= htmlspecialchars($item['icon']) ?>" alt=""/>
-          </div>
-          <p><?= $item['text'] ?></p>
-        </div>
-        <?php endforeach; ?>
+    <?php else: ?>
+    <!-- Send a letter row — hover only on this row -->
+    <div class="request-row" style="border-bottom:1px solid #f1f5f9;">
+      <div class="icon-wrap">
+        <img src="<?= htmlspecialchars($item['icon']) ?>" alt=""/>
       </div>
-
-      <!-- Official / Admin card -->
-      <div class="official-card fade-in stagger-5">
-        <div class="icon-wrap">
-          <img src="Img/Contact/Admin.png" alt=""/>
-        </div>
-        <div class="info">
-          <h3>Claire Dennis S. Mapa, Ph.D.</h3>
-          <p>Undersecretary<br/>
-             National Statistician and Civil Registrar General<br/>
-             23rd floor, PSA Headquarters, PSA Complex, East Avenue, Diliman, Quezon City, Philippines 1101
-          </p>
-        </div>
+      <p><?= $item['text'] ?></p>
+    </div>
+    <!-- Undersecretary row — no hover, indented -->
+    <div class="official-sub-card">
+      <div class="icon-wrap">
+        <img src="Img/Contact/Admin.png" alt=""/>
       </div>
-
-      <!-- Response time notice -->
-      <div class="notice-card fade-in stagger-6">
-        <div class="icon-wrap">
-          <img src="Img/Contact/Clock.png" alt=""/>
-        </div>
-        <p>
-          PSA will respond to your data request within three (3) working days either clarify or address your data request.<br/>
-          Please be advised however that the length of time needed to completely address your request will vary depending on the availability of data.
+      <div class="info">
+        <h3>Claire Dennis S. Mapa, Ph.D.</h3>
+        <p>Undersecretary<br/>
+           National Statistician and Civil Registrar General<br/>
+           23rd floor, PSA Headquarters, PSA Complex, East Avenue, Diliman, Quezon City, Philippines 1101
         </p>
       </div>
+    </div>
+    <?php endif; ?>
 
-    </div><!-- /left-col -->
+    <?php endforeach; ?>
+  </div>
 
-    <!-- ── RIGHT COLUMN — Contact Information ── -->
-    <div class="right-col fade-in stagger-2">
-      <div class="contact-info-box">
-        <h2>Contact Information</h2>
-        <!-- Underline bar — edit width/height/background/border-radius in .contact-info-underline CSS -->
-        <div class="contact-info-underline"></div>
+  <!-- Response time notice -->
+  <div class="notice-card fade-in stagger-5">
+    <div class="icon-wrap">
+      <img src="Img/Contact/Clock.png" alt=""/>
+    </div>
+    <p>
+      PSA will respond to your data request within three (3) working days either clarify or address your data request.<br/>
+      Please be advised however that the length of time needed to completely address your request will vary depending on the availability of data.
+    </p>
+  </div>
 
-        <p class="info-label">For data inquiries, contact:</p>
-           <hr class="contact-info-divider"/>
+  <!-- ── Contact Information ── -->
+  <div class="contact-info-bar fade-in stagger-6">
+    <h2>Contact Information</h2>
+    <div class="contact-info-underline"></div>
 
-        <strong>Knowledge Management Division</strong>
-        <p>
-          Philippine Statistics Authority<br/>
-          9/F PSA Headquarters<br/>
-          PSA Complex, East Avenue<br/>
-          Diliman, Quezon City
-        </p>
-        <p style="margin-top:6px;">
-          Email: <a href="mailto:info@psa.gov.ph">info@psa.gov.ph</a>
-        </p>
+    <div class="contact-info-cols">
 
-        <hr class="contact-info-divider"/>
+      <!-- Left column -->
+      <div class="contact-info-col">
+        <p class="col-label">For data inquiries, contact</p>
+        <p class="col-name">Knowledge Management Division (KMD)</p>
+        <p class="col-role">Philippine Statistics Authority</p>
 
-        <strong>ATTY. ELIEZER P. AMBATALI</strong>
-        <p style="font-size:12px;color:#6b7280;margin-bottom:6px;">
-          Direct III / Data Protection Officer (DPO)
-        </p>
-        <p>
-          22nd floor, PSA Headquarters<br/>
-          PSA Complex, East Avenue<br/>
-          Diliman, Quezon City<br/>
-          Philippines 1101
-        </p>
-        <p style="margin-top:6px;">
-          Telephone: (632) 8938-5273<br/>
-          Email: <a href="mailto:dpo@psa.gov.ph">dpo@psa.gov.ph</a>
-        </p>
+        <div class="info-row">
+          <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+               stroke="#1a3269" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18M9 21V7l6-4v18M9 11h6"/>
+          </svg>
+          <p>9/F PSA Headquarters, PSA Complex<br>East Avenue, Diliman, Quezon City</p>
+        </div>
+
+        <div class="info-row">
+          <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+               stroke="#1a3269" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+          <a href="mailto:info@psa.gov.ph">info@psa.gov.ph</a>
+        </div>
       </div>
-    </div><!-- /right-col -->
 
-  </div><!-- /main-layout -->
+      <!-- Divider -->
+      <div class="contact-info-divider"></div>
+
+      <!-- Right column -->
+      <div class="contact-info-col">
+        <p class="col-label">Data Protection Officer</p>
+        <p class="col-name">Atty. Eliezer P. Ambatali</p>
+        <p class="col-role">Director III / Data Protection Officer (DPO)</p>
+
+        <div class="info-row">
+          <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+               stroke="#1a3269" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18M9 21V7l6-4v18M9 11h6"/>
+          </svg>
+          <p>22nd floor, PSA Headquarters, PSA Complex<br>East Avenue, Diliman, Quezon City 1101</p>
+        </div>
+
+        <div class="info-row">
+          <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+               stroke="#1a3269" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.14 12 19.79 19.79 0 0 1 1.08 3.21 2 2 0 0 1 3.05 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <p>(632) 8938-5273</p>
+        </div>
+
+        <div class="info-row">
+          <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+               stroke="#1a3269" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+          <a href="mailto:dpo@psa.gov.ph">dpo@psa.gov.ph</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div>
 
 <!-- ════ FOOTER ════ -->
