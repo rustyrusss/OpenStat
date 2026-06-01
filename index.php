@@ -698,6 +698,26 @@
       <a href="#" class="featured-card bg-white rounded-xl no-underline flex items-center gap-4 px-5 py-4"
          style="box-shadow: 0 2px 12px rgba(0,0,0,0.08); animation-delay:0.10s;">
         <div class="flex-shrink-0 w-[56px] h-[56px] flex items-center justify-center">
+          <img src="Img/Featured/CountrySTATLogo.png" alt="CountrySTAT Philippines" class="featured-card-img" style="width:56px; height:56px; object-fit:contain;"/>
+        </div>
+        <div>
+          <div class="text-[14px] font-bold text-primary mb-0.5">CountrySTAT Philippines</div>
+          <div class="text-[13px] text-gray-400">See more</div>
+        </div>
+      </a>
+      <a href="#" class="featured-card bg-white rounded-xl no-underline flex items-center gap-4 px-5 py-4"
+         style="box-shadow: 0 2px 12px rgba(0,0,0,0.08); animation-delay:0.10s;">
+        <div class="flex-shrink-0 w-[56px] h-[56px] flex items-center justify-center">
+          <img src="Img/Featured/PSY.png" alt="CountrySTAT Philippines" class="featured-card-img" style="width:56px; height:56px; object-fit:contain;"/>
+        </div>
+        <div>
+          <div class="text-[14px] font-bold text-primary mb-0.5">CountrySTAT Philippines</div>
+          <div class="text-[13px] text-gray-400">See more</div>
+        </div>
+      </a>
+    <a href="#" class="featured-card bg-white rounded-xl no-underline flex items-center gap-4 px-5 py-4"
+         style="box-shadow: 0 2px 12px rgba(0,0,0,0.08); animation-delay:0.10s;">
+        <div class="flex-shrink-0 w-[56px] h-[56px] flex items-center justify-center">
           <img src="Img/Featured/countrystat.png" alt="CountrySTAT Philippines" class="featured-card-img" style="width:56px; height:56px; object-fit:contain;"/>
         </div>
         <div>

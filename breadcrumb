@@ -1,0 +1,110 @@
+breadcrumbMap = {
+        "DB__1A": { 
+            label: "Demographic-and-Social-Statistics / Population and Vital Statistics", 
+            link: "/Database/Demographic-and-Social-Statistics/Population-and-Vital-Statistics" 
+        },
+         "DB__1B": { 
+            label: "Demographic-and-Social-Statistics / Labor and Employment", 
+            link: "/Database/Demographic-and-Social-Statistics/Labor and Employment", 
+        },
+          "DB__1E": { 
+            label: "Demographic-and-Social-Statistics / Income And Consumption", 
+            link: "/Database/Demographic-and-Social-Statistics/Income-And-Consumption", 
+        },
+        "DB__1F": { 
+            label: "Demographic-and-Social-Statistics / Poverty", 
+            link: "/Database/Demographic-and-Social-Statistics/Poverty", 
+        },
+        "DB__1C": { 
+            label: "Demographic-and-Social-Statistics / Education", 
+            link: "/Database/Demographic-and-Social-Statistics/Education", 
+        },
+        "DB__1M": { 
+            label: "Demographic-and-Social-Statistics / Health", 
+            link: "/Database/Demographic-and-Social-Statistics/Health", 
+        },
+        "DB__1N": { 
+            label: "Demographic-and-Social-Statistics / Migration", 
+            link: "/Database/Demographic-and-Social-Statistics/Migration", 
+        },
+        "DB__1O": { 
+            label: "Demographic-and-Social-Statistics / Reproductive Health", 
+            link: "/Database/Demographic-and-Social-Statistics/Reproductive-Health", 
+        },
+        "DB__1P": { 
+            label: "Demographic-and-Social-Statistics / Food Security and Nutrition", 
+            link: "/Database/Demographic-and-Social-Statistics/Food Security and Nutrition", 
+        },
+        "DB__1Q": { 
+            label: "Demographic-and-Social-Statistics / Gender Statistics", 
+            link: "/Database/Demographic-and-Social-Statistics/Gender Statistics", 
+        },
+        "DB__1R": { 
+            label: "Demographic-and-Social-Statistics / Crime and Justice Statistic", 
+            link: "/Database/Demographic-and-Social-Statistics/Crime and Justice Statistics", 
+        },
+        "DB__2B": { 
+            label: "Economic-Statistics / Economic Accounts", 
+            link: "/Database/Economic-Statistics/Economic-Accounts", 
+        },
+        "DB__2D": { 
+            label: "Economic-Statistics / Services Statistics", 
+            link: "/Database/Economic-Statistics/Services Statistics", 
+        },
+        "DB__2E": { 
+            label: "Economic-Statistics / Agriculture, Forestry, Fisheries", 
+            link: "/Database/Economic-Statistics/Agriculture-Forestry-Fisheries", 
+        },
+         "DB__2L": { 
+            label: "Economic-Statistics / Trade: International & Domestic", 
+            link: "/Database/Economic-Statistics/Trade: International & Domestic", 
+        },
+        "DB__2M": { 
+            label: "Economic-Statistics / Prices", 
+            link: "/Database/Economic-Statistics/Prices", 
+        },
+        "DB__2I": { 
+            label: "Economic-Statistics / Tourism", 
+            link: "/Database/Economic-Statistics/Tourism", 
+        },
+        "DB__2G": { 
+            label: "Economic-Statistics / Mining, Manufacturing, Construction", 
+            link: "/Database/Economic-Statistics/Mining-Manufacturing-Construction", 
+        },
+        "DB__2N": { 
+            label: "Economic-Statistics / Labor Cost", 
+            link: "/Database/Economic-Statistics/Labor-Cost", 
+        },
+        "DB__3A": { 
+            label: "Environment-and-multi-domain Statistics / Environment", 
+            link: "/Database/Environment-and-multi-domain-Statistics/Environment", 
+        },
+        "DB__3E": { 
+            label: "Environment-and-multi-domain Statistics / Child Poverty", 
+            link: "/Database/Environment-and-multi-domain-Statistics/Child Poverty", 
+        },
+        "DB__3F": { 
+            label: "Environment-and-multi-domain Statistics / Information Society", 
+            link: "/Database/Environment-and-multi-domain-Statistics/Information Society", 
+        },
+          "DB__2G": { 
+            label: "Environment-and-multi-domain Statistics / Energy", 
+            link: "/Database/Environment-and-multi-domain-Statistics/Energy", 
+        },
+        "DB__G": { 
+            label: "Environment-and-multi-domain Statistics / Digital Connectivity", 
+            link: "/Database/Environment-and-multi-domain-Statistics/Digital Connectivity", 
+        },
+         "DB__3K": { 
+            label: "Environment-and-multi-domain Statistics / Decent Work", 
+            link: "/Database/Environment-and-multi-domain-Statistics/Decent Work", 
+        },
+         "DB__3K": { 
+            label: "Environment-and-multi-domain Statistics / Sustainable Development Goals", 
+            link: "/Database/Environment-and-multi-domain-Statistics/Sustainable Development Goals", 
+        },
+        
+    };
+
+
+    
