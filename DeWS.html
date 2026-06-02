@@ -1,29 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" style="margin:0;padding:0;background:#f0f0f0;">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PSA OpenSTAT - Decent Work Statistics</title>
-  <meta name="description" content="Explore official statistics on decent work and labor in the Philippines." />
-  <link rel="stylesheet" href="assets/css/DeWS.css" />
+  <meta name="description" content="Explore official statistics on decent work and labor in the Philippines."/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <!-- DeWS-only stylesheet — will not affect other pages -->
+  <link rel="stylesheet" href="assets/css/DeWS.css"/>
 </head>
-<body style="margin:0;padding:0;background:#f0f0f0;">
+<body>
 
+<!-- ════ PAGE WRAPPER — all DeWS CSS is scoped inside #dews-page ════ -->
 <div id="dews-page">
 
   <!-- ════ NAVBAR ════ -->
   <header class="dews-navbar">
     <div class="dews-navbar__top">
-      <img
-        src="Img/Logos/PSAHeader.png"
-        alt="Philippine Statistics Authority"
-        class="dews-navbar__logo-psa"
-      />
-      <img
-        src="Img/Logos/OpenStat-White.png"
-        alt="OpenSTAT"
-        class="dews-navbar__logo-openstat"
-      />
+      <img src="Img/Logos/PSAHeader.png" alt="Philippine Statistics Authority" class="dews-navbar__logo-psa"/>
+      <img src="Img/Logos/OpenStat-White.png" alt="OpenSTAT" class="dews-navbar__logo-open"/>
     </div>
     <nav class="dews-navbar__nav">
       <a href="index.php"    class="dews-nav-link">Home</a>
@@ -36,60 +31,97 @@
   </header>
 
   <!-- ════ HERO ════ -->
-  <section class="dews-hero">
-    <img
-      src="Img/Background-Data.png"
-      alt=""
-      class="dews-hero__bg"
-    />
+  <div class="dews-hero">
+    <img src="Img/Background-Data.png" alt="" class="dews-hero__bg"/>
     <div class="dews-hero__overlay"></div>
     <div class="dews-hero__content">
-      <div class="dews-breadcrumb">
+      <div class="dews-hero__breadcrumb">
         <a href="about.php">About &gt;</a>
       </div>
       <h1 class="dews-hero__title">Decent Work Statistics (DeWS)</h1>
     </div>
-  </section>
+  </div>
 
   <!-- ════ MAIN CONTENT ════ -->
   <main class="dews-main">
 
-    <!-- White content card -->
+    <!-- ── White content card ── -->
     <div class="dews-content-card dews-anim">
 
-      <h2 class="dews-section-title dews-anim-left">
-        Decent Work Statistics (DeWS)
-      </h2>
-      <div class="dews-section-underline"></div>
+      <h2 class="dews-content-card__title dews-anim-left">Decent Work Statistics (DeWS)</h2>
+      <div class="dews-underline"></div>
 
-      <p class="dews-intro-text dews-anim">
-        The Decent Work Statistics (DeWS) - Philippine is a comprehensive set of statistical indicators
-        that measure the quality of work and the conditions under which people work.
+      <!-- Intro paragraphs -->
+      <p class="dews-intro dews-anim" style="transition-delay:0.06s;">
+        Decent work is integral to poverty reduction efforts and is a key mechanism for achieving equitable, inclusive and sustainable development. It involves opportunities for work that is productive and delivers a fair income, provides security in the workplace and social protection for workers and their families, produces better perspective for personal development and social integration, and gives people the freedom to express their concerns, to organize and to participate in decisions that affect their lives.
+      </p>
+      <p class="dews-intro dews-anim" style="transition-delay:0.12s;">
+        The 2008 ILO Declaration on Social Justice for a Fair Globalization suggested the establishment of indicators to track progress made in promoting decent work due to an increased insistence to deliver quality and decent job. The ILO convened an international Tripartite Meeting of Experts (TME) on the Measurement of Decent Work in September 2008. It gathered experts' views and recommendations on the conceptual framework proposed by the ILO. Later in the year, the ILO Governing Body and the 18th International Conference of Labour Statistics (ICLS) adopted the proposed framework of Decent Work Indicators.
+      </p>
+      <p class="dews-intro dews-anim" style="transition-delay:0.18s;">
+        The measurement framework on decent work covers ten substantive elements corresponding to the four strategic pillars of the Decent Work Agenda: employment opportunities; adequate earnings and productive work; decent hours; combining work, family and personal life; work that should be abolished; stability and security of work; equal opportunity and treatment in employment; safe work environment; social security; and, social dialogue, workers' and employers' representation. An additional element, economic and social context of decent work, helps determine what constitute decency in society as well as the extent to which the achievement of decent work enhances national economic, social and labor market performance.
       </p>
 
-      <p class="dews-intro-text dews-anim">
-        Organized into eleven (11) substantive elements, DeWS provides a framework for monitoring
-        progress toward decent work for all.
-      </p>
+      <!-- ── Pillars of Decent Work ── -->
+      <div class="dews-pillars dews-anim" style="transition-delay:0.24s;">
+        <h3 class="dews-pillars__heading">Pillars of Decent Work</h3>
+        <div class="dews-underline dews-underline--sm"></div>
 
-      <p class="dews-intro-text dews-anim">
-        The measurement framework on decent work covers ten substantive elements corresponding to the
-        four strategic pillars of the Decent Work Agenda: employment opportunities; adequate earnings
-        and productive work; decent hours; combining work, family and personal life; work that should
-        be abolished; stability and security of work; equal opportunity and treatment in employment;
-        safe work environment; social security; and, social dialogue, workers' and employers'
-        representation. An additional element, economic and social context of decent work, helps
-        determine what constitute decency in society as well as the extent to which the achievement
-        of decent work enhances national economic, social and labor market performance.
+        <div class="dews-pillars__grid">
+
+          <div class="dews-pillar-card dews-anim-zoom">
+            <div class="dews-pillar-card__icon-wrap">
+              <img src="Img/Decent-Work-Statistics/Employment.png" alt="Employment"/>
+            </div>
+            <div class="dews-pillar-card__title">Employment</div>
+            <p class="dews-pillar-card__body">Promotes the creation of sustainable enterprises and increased efficiencies in the economy. It also explores opportunities for increased investments in human resource development and improved working conditions and seeks to achieve full and productive employment.</p>
+          </div>
+
+          <div class="dews-pillar-card dews-anim-zoom">
+            <div class="dews-pillar-card__icon-wrap">
+              <img src="Img/Decent-Work-Statistics/Right At Work.png" alt="Rights at Work"/>
+            </div>
+            <div class="dews-pillar-card__title">Rights at Work</div>
+            <p class="dews-pillar-card__body">Aims to strengthen observance of the constitutionally protected rights of workers. It seeks to ensure the ratification of core and governance conventions and respect for fundamental principles and rights at work.</p>
+          </div>
+
+          <div class="dews-pillar-card dews-anim-zoom">
+            <div class="dews-pillar-card__icon-wrap">
+              <img src="Img/Decent-Work-Statistics/Social Protection.png" alt="Social Protection"/>
+            </div>
+            <div class="dews-pillar-card__title">Social Protection</div>
+            <p class="dews-pillar-card__body">Seeks to improve access to social protection mechanisms, improved wages, better working conditions and expanded employment opportunities for all.</p>
+          </div>
+
+          <div class="dews-pillar-card dews-anim-zoom">
+            <div class="dews-pillar-card__icon-wrap">
+              <img src="Img/Decent-Work-Statistics/Social Dialogue.png" alt="Social Dialogue"/>
+            </div>
+            <div class="dews-pillar-card__title">Social Dialogue</div>
+            <p class="dews-pillar-card__body">Seeks to strengthen tripartism and broaden representation of workers as a tool for attaining employment goals.</p>
+          </div>
+
+        </div><!-- end pillars grid -->
+      </div><!-- end pillars section -->
+
+      <!-- DeWS framework paragraphs -->
+      <p class="dews-intro dews-anim" style="transition-delay:0.06s;">
+        The Decent Work Statistics (DeWS) - Philippine is a comprehensive set of statistical indicators that measure the quality of work and the conditions under which people work.
+      </p>
+      <p class="dews-intro dews-anim" style="transition-delay:0.12s;">
+        Organized into eleven (11) substantive elements, DeWS provides a framework for monitoring progress toward decent work for all.
+      </p>
+      <p class="dews-intro dews-anim" style="transition-delay:0.18s;">
+        The measurement framework on decent work covers ten substantive elements corresponding to the four strategic pillars of the Decent Work Agenda: employment opportunities; adequate earnings and productive work; decent hours; combining work, family and personal life; work that should be abolished; stability and security of work; equal opportunity and treatment in employment; safe work environment; social security; and, social dialogue, workers' and employers' representation. An additional element, economic and social context of decent work, helps determine what constitute decency in society as well as the extent to which the achievement of decent work enhances national economic, social and labor market performance.
       </p>
 
       <!-- Download box -->
-      <div class="dews-download-box dews-anim">
+      <div class="dews-download-box dews-anim" style="transition-delay:0.30s;">
         <p>Download the latest Decent Work Statistics (DeWS) - summary tables, 1995-2018.</p>
         <a href="#" class="dews-download-btn">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                fill="none" stroke="currentColor" stroke-width="2.5"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+               stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
             <polyline points="7 10 12 15 17 10"/>
             <line x1="12" y1="15" x2="12" y2="3"/>
@@ -100,21 +132,16 @@
 
       <!-- Elements header bar -->
       <div class="dews-elements-bar">
-        <img
-          src="Img/Decent-Work-Statistics/11-Elements.png"
-          alt="11 Elements icon"
-          class="dews-elements-bar__icon"
-        />
-        <span class="dews-elements-bar__title dews-anim">The 11 Elements of Decent Work</span>
+        <img src="Img/Decent-Work-Statistics/11-Elements.png" alt="11 Elements"/>
+        <span class="dews-elements-bar__title dews-anim" style="transition-delay:0.2s;">The 11 Elements of Decent Work</span>
       </div>
 
       <!-- Elements grid -->
       <div class="dews-elements-grid">
 
-        <!-- Element 1 -->
         <a href="#economic-social" class="dews-el-btn dews-anim">
           <div class="dews-el-icon-wrap">
-            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Economic-And-Social.png" alt="Economic and Social icon" />
+            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Economic-And-Social.png" alt="Economic and Social for Decent Work"/>
           </div>
           <div class="dews-el-text">
             <div class="dews-el-number">Element 1</div>
@@ -123,10 +150,9 @@
           <span class="dews-el-arrow">&#8250;</span>
         </a>
 
-        <!-- Element 2 -->
         <a href="#stability" class="dews-el-btn dews-anim">
           <div class="dews-el-icon-wrap">
-            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Stability.png" alt="Stability icon" />
+            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Stability.png" alt="Stability and Security for Work"/>
           </div>
           <div class="dews-el-text">
             <div class="dews-el-number">Element 2</div>
@@ -135,10 +161,9 @@
           <span class="dews-el-arrow">&#8250;</span>
         </a>
 
-        <!-- Element 3 -->
         <a href="#employment" class="dews-el-btn dews-anim">
           <div class="dews-el-icon-wrap">
-            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Employment (1).png" alt="Employment icon" />
+            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Employment.png" alt="Employment Opportunities"/>
           </div>
           <div class="dews-el-text">
             <div class="dews-el-number">Element 3</div>
@@ -147,10 +172,9 @@
           <span class="dews-el-arrow">&#8250;</span>
         </a>
 
-        <!-- Element 4 -->
         <a href="#equal" class="dews-el-btn dews-anim">
           <div class="dews-el-icon-wrap">
-            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Equal.png" alt="Equal Opportunity icon" />
+            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Equal.png" alt="Equal Opportunity and Treatment"/>
           </div>
           <div class="dews-el-text">
             <div class="dews-el-number">Element 4</div>
@@ -159,10 +183,9 @@
           <span class="dews-el-arrow">&#8250;</span>
         </a>
 
-        <!-- Element 5 -->
         <a href="#adequate" class="dews-el-btn dews-anim">
           <div class="dews-el-icon-wrap">
-            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Adequate.png" alt="Adequate Earnings icon" />
+            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Adequate.png" alt="Adequate Earnings"/>
           </div>
           <div class="dews-el-text">
             <div class="dews-el-number">Element 5</div>
@@ -171,10 +194,9 @@
           <span class="dews-el-arrow">&#8250;</span>
         </a>
 
-        <!-- Element 6 -->
         <a href="#safe-work" class="dews-el-btn dews-anim">
           <div class="dews-el-icon-wrap">
-            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Safe-Work.png" alt="Safe Work icon" />
+            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Safe-Work.png" alt="Safe Work Environment"/>
           </div>
           <div class="dews-el-text">
             <div class="dews-el-number">Element 6</div>
@@ -183,10 +205,9 @@
           <span class="dews-el-arrow">&#8250;</span>
         </a>
 
-        <!-- Element 7 -->
         <a href="#decent-hours" class="dews-el-btn dews-anim">
           <div class="dews-el-icon-wrap">
-            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Decent-Hours.png" alt="Decent Hours icon" />
+            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Decent-Hours.png" alt="Decent Hours"/>
           </div>
           <div class="dews-el-text">
             <div class="dews-el-number">Element 7</div>
@@ -195,10 +216,9 @@
           <span class="dews-el-arrow">&#8250;</span>
         </a>
 
-        <!-- Element 8 -->
         <a href="#social-security" class="dews-el-btn dews-anim">
           <div class="dews-el-icon-wrap">
-            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Social-Security.png" alt="Social Security icon" />
+            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Social-Security.png" alt="Social Security"/>
           </div>
           <div class="dews-el-text">
             <div class="dews-el-number">Element 8</div>
@@ -207,10 +227,9 @@
           <span class="dews-el-arrow">&#8250;</span>
         </a>
 
-        <!-- Element 9 -->
         <a href="#combining-work" class="dews-el-btn dews-anim">
           <div class="dews-el-icon-wrap">
-            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Combining-Work.png" alt="Combining Work icon" />
+            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Combining-Work.png" alt="Combining Work, Family and Personal Life"/>
           </div>
           <div class="dews-el-text">
             <div class="dews-el-number">Element 9</div>
@@ -219,10 +238,9 @@
           <span class="dews-el-arrow">&#8250;</span>
         </a>
 
-        <!-- Element 10 -->
         <a href="#social-dialogue" class="dews-el-btn dews-anim">
           <div class="dews-el-icon-wrap">
-            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Social Dialogue.png" alt="Social Dialogue icon" />
+            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Social Dialogue.png" alt="Social Dialogue"/>
           </div>
           <div class="dews-el-text">
             <div class="dews-el-number">Element 10</div>
@@ -231,10 +249,9 @@
           <span class="dews-el-arrow">&#8250;</span>
         </a>
 
-        <!-- Element 11 -->
         <a href="#work-abolished" class="dews-el-btn dews-anim">
           <div class="dews-el-icon-wrap">
-            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Work.png" alt="Work Abolished icon" />
+            <img class="dews-el-icon" src="Img/Decent-Work-Statistics/Work.png" alt="Work that Should be Abolished"/>
           </div>
           <div class="dews-el-text">
             <div class="dews-el-number">Element 11</div>
@@ -243,84 +260,183 @@
           <span class="dews-el-arrow">&#8250;</span>
         </a>
 
-        <!-- Placeholder for odd count -->
-        <div class="dews-el-btn dews-el-placeholder" aria-hidden="true"></div>
+        <!-- Even-out placeholder (11 items → odd) -->
+        <div class="dews-el-btn dews-el-btn--placeholder"></div>
 
-      </div><!-- end .dews-elements-grid -->
+      </div><!-- end elements grid -->
 
-    </div><!-- end .dews-content-card -->
+    </div><!-- end content-card -->
 
-    <!-- ════ THREE BOTTOM CARDS ════ -->
+    <!-- ── Three bottom cards ── -->
     <div class="dews-bottom-cards">
 
-      <!-- Card 1 -->
       <div class="dews-bottom-card dews-anim-zoom">
         <div class="dews-bottom-card__header">
           <div class="dews-card-icon-wrap">
-            <img src="Img/Decent-Work-Statistics/Valuable.png" alt="Valuable Source icon" />
+            <img src="Img/Decent-Work-Statistics/Valuable.png" alt="A Valuable Source"/>
           </div>
           <div class="dews-bottom-card__title">A Valuable Source for Evidence-Based Policy</div>
         </div>
-        <p class="dews-bottom-card__body">
-          As a valuable source of statistics and statistical indicators in aid of policies and programs
-          formulation, monitoring and evaluation designed to promote decent work in our country, the
-          DeWS-Philippines is updated annually by the Philippine Statistics Authority (PSA). The data
-          are presented from 1995 to the latest available from the source agencies at the time of
-          compilation. The International Labour Organization (ILO) has a publication of data up to
-          2010, specifically in the report: "Philippine Decent Work Country Profile" released in
-          October 2012.
-        </p>
+        <p class="dews-bottom-card__body">As a valuable source of statistics and statistical indicators in aid of policies and programs formulation, monitoring and evaluation designed to promote decent work in our country, the DeWS-Philippines is updated annually by the Philippine Statistics Authority (PSA). The data are presented from 1995 to the latest available from the source agencies at the time of compilation. The International Labour Organization (ILO) has a publication of data up to 2010, specifically in the report: "Philippine Decent Work Country Profile" released in October 2012.</p>
       </div>
 
-      <!-- Card 2 -->
       <div class="dews-bottom-card dews-anim-zoom">
         <div class="dews-bottom-card__header">
           <div class="dews-card-icon-wrap">
-            <img src="Img/Decent-Work-Statistics/Supporting.png" alt="Supporting icon" />
+            <img src="Img/Decent-Work-Statistics/Supporting.png" alt="Supporting Informed Decisions"/>
           </div>
           <div class="dews-bottom-card__title">Supporting in Informed Decisions</div>
         </div>
-        <p class="dews-bottom-card__body">
-          The DeWS-Philippines also envisions to increase and strengthen awareness on decent work not
-          only among policymakers (including those outside the labor sphere), but also among labor
-          unions, employers and researchers. Moreover, it significantly assists in the effective
-          monitoring and assessment in measuring the progress toward decent work in the country.
-        </p>
+        <p class="dews-bottom-card__body">The DeWS-Philippines also envisions to increase and strengthen awareness on decent work not only among policymakers (including those outside the labor sphere), but also among labor unions, employers and researchers. Moreover, it significantly assists in the effective monitoring and assessment in measuring the progress toward decent work in the country.</p>
       </div>
 
-      <!-- Card 3 -->
       <div class="dews-bottom-card dews-anim-zoom">
         <div class="dews-bottom-card__header">
           <div class="dews-card-icon-wrap">
-            <img src="Img/Decent-Work-Statistics/Key.png" alt="Key Data Source icon" />
+            <img src="Img/Decent-Work-Statistics/Key.png" alt="Key Data Source"/>
           </div>
           <div class="dews-bottom-card__title">Key Data Source</div>
         </div>
-        <p class="dews-bottom-card__body">
-          The PSA is the primary source of information in this publication, including data from the
-          Labor Force Survey and other PSA surveys, (Income and Expenditure Survey, Functional
-          Literacy, Education and Mass Media Survey), as well as administrative data from national
-          agencies such as DOLE, DBM, DepEd, CHED, PhilHealth, SSS, and others. International
-          sources include the ILO, World Bank, and WHO, among others.
-        </p>
+        <p class="dews-bottom-card__body">The PSA is the primary source of information in this publication, including data from the Labor Force Survey and other PSA surveys, (Income and Expenditure Survey, Functional Literacy, Education and Mass Media Survey), as well as administrative data from national agencies such as DOLE, DBM, DepEd, CHED, PhilHealth, SSS, and others. International sources include the ILO, World Bank, and WHO, among others.</p>
       </div>
 
-    </div><!-- end .dews-bottom-cards -->
+    </div><!-- end bottom cards -->
+
+    <!-- ════ REFERENCES ════ -->
+    <div class="dews-references dews-anim">
+      <h2 class="dews-references__heading">References</h2>
+      <div class="dews-underline"></div>
+
+      <div class="dews-ref-grid">
+
+        <!-- Row 1 (3 cards) -->
+        <div class="dews-ref-row">
+
+          <div class="dews-ref-card">
+            <div class="dews-ref-thumb">
+              <img src="Img/Decent-Work-Statistics/DW Country Profile.png" alt="Decent Work Country Profile"/>
+            </div>
+            <div class="dews-ref-body">
+              <div class="dews-ref-title">Decent Work Country Profile</div>
+              <p class="dews-ref-desc">Decent Work Country Profiles cover ten substantive elements corresponding to the four strategic pillars of the Decent Work Agenda (full and productive employment, rights at work, social protection and the promotion of social dialogue).</p>
+              <a href="#" class="dews-ref-dl-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2.5"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download
+              </a>
+            </div>
+          </div>
+
+          <div class="dews-ref-card">
+            <div class="dews-ref-thumb">
+              <img src="Img/Decent-Work-Statistics/DW Snapshot.png" alt="DW Snapshot"/>
+            </div>
+            <div class="dews-ref-body">
+              <div class="dews-ref-title">Measuring Decent Work in the Philippines - The Decent Work Country Profile at a Glance</div>
+              <p class="dews-ref-desc">The Decent Work Country Profile at a glance is part of the ILO and European Commission project - Monitoring and Assessing Progress on Decent Work (MAP), which supports better measurement of decent work in developing countries.</p>
+              <a href="#" class="dews-ref-dl-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2.5"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download
+              </a>
+            </div>
+          </div>
+
+          <div class="dews-ref-card">
+            <div class="dews-ref-thumb">
+              <img src="Img/Decent-Work-Statistics/DW TripartiteValidation Workshop.png" alt="Tripartite Validation Workshop"/>
+            </div>
+            <div class="dews-ref-body">
+              <div class="dews-ref-title">Tripartite Validation Workshop of the Philippines Decent Work Country Profile</div>
+              <p class="dews-ref-desc">A Tripartite Validation Workshop of the Philippines Decent Work Country Profile was held in Manila from 20 to 21 March 2012, to give the opportunity to tripartite partners, other government agencies, academe, and civil society groups to discuss the main results of the study and advise on final amendments before its publication.</p>
+              <a href="#" class="dews-ref-dl-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2.5"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download
+              </a>
+            </div>
+          </div>
+
+        </div><!-- end row 1 -->
+
+        <!-- Row 2 (2 cards — partial, centered) -->
+        <div class="dews-ref-row dews-ref-row--partial">
+
+          <div class="dews-ref-card">
+            <div class="dews-ref-thumb">
+              <img src="Img/Decent-Work-Statistics/DW Concepts_Definitions_rev.png" alt="Decent Work Indicators"/>
+            </div>
+            <div class="dews-ref-body">
+              <div class="dews-ref-title">Decent Work Indicators - Guidelines for producers and users of statistical and legal framework indicators</div>
+              <p class="dews-ref-desc">The second version of the ILO Manual on Decent Work Indicators presents several enhancements and additions to the previous version and will provide a useful tool for those interested in a complete analysis of the various dimensions of decent work at the country level, as well as those more focused on the data production.</p>
+              <a href="#" class="dews-ref-dl-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2.5"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download
+              </a>
+            </div>
+          </div>
+
+          <div class="dews-ref-card">
+            <div class="dews-ref-thumb">
+              <img src="Img/Decent-Work-Statistics/Decent Work Country Diagnostics PH 2017.png" alt="Decent Work Country Diagnostics"/>
+            </div>
+            <div class="dews-ref-body">
+              <div class="dews-ref-title">Decent Work Country Diagnostics: Philippines 2017</div>
+              <p class="dews-ref-desc">The Decent Work Country Diagnostics presents labour market trends, conditions and challenges in the Philippines. The Diagnostics offers a well-informed and comprehensive narrative of growth and decent work situation.</p>
+              <a href="#" class="dews-ref-dl-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2.5"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download
+              </a>
+            </div>
+          </div>
+
+        </div><!-- end row 2 -->
+
+      </div><!-- end ref-grid -->
+    </div><!-- end references -->
 
   </main>
 
   <!-- ════ FOOTER ════ -->
   <footer class="dews-footer">
     <span>2026 Philippine Statistics Authority. All content is public domain unless otherwise stated.</span>
-    <div class="dews-footer__links">
-      <a href="#" class="dews-footer__link">Terms Of Use</a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="#">Terms Of Use</a>
       <span class="dews-footer__divider">|</span>
-      <a href="#" class="dews-footer__link">Privacy Statement</a>
+      <a href="#">Privacy Statement</a>
     </div>
   </footer>
 
 </div><!-- end #dews-page -->
 
+<!-- DeWS-only script — scoped to #dews-page, no global variable pollution -->
 <script src="assets/js/DeWS.js"></script>
 </body>
 </html>
